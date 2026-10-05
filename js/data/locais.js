@@ -6,7 +6,7 @@ const LOCAIS = [
     icone: 'bi-compass',
     descricao: 'Lima, 1925 — capital costeira do Peru, encrustada entre o Pacífico e os Andes. A cidade colonial guarda tradições que remontam ao Império Inca e ainda mais além. Foi aqui que a expedição Carlyle iniciou sua fatídica jornada para o interior, e onde os investigadores recebem a primeira pista sobre o que estava em jogo.',
     clima: 'Desértico costeiro. A "garúa" — neblina úmida — encobre a cidade entre junho e novembro. Calor moderado no verão andino (dezembro–março). Raro ver chuva forte na costa.',
-    mapa: null,
+    mapa: 'assets/img/mapas/peru.png',
     culto: {
       nome: 'O Culto da Montanha Sangrenta',
       foto: null,
@@ -20,7 +20,7 @@ const LOCAIS = [
     icone: 'bi-building',
     descricao: 'A metrópole americana fermenta com ambição, jazz e imigrantes nos anos 1920. O Chelsea Hotel guarda o último segredo de Jackson Elias. No Harlem, entre os ritmos do jazz e a fumaça de charuto, opera a Fundação Ju-Ju — fachada para um culto que trafica em conhecimentos proibidos. Foi aqui que tudo começou e aqui que a investigação toma forma.',
     clima: 'Continental úmido. Outono de 1925 — folhas caindo, noites frescas. Invernos rigorosos com neve abundante. Verões quentes e úmidos. A cidade nunca para, independentemente do clima.',
-    mapa: null,
+    mapa: 'assets/img/mapas/nova-york.png',
     culto: {
       nome: 'A Fundação Ju-Ju',
       foto: null,
@@ -34,7 +34,7 @@ const LOCAIS = [
     icone: 'bi-buildings',
     descricao: 'Londres, capital de um Império que ainda cobre um quarto do planeta. Sob a névoa permanente e a fuligem das fábricas, a cidade abriga o Museu Britânico — com uma das maiores coleções de antiguidades egípcias fora do Cairo —, clubes privados de cavalheiros e uma mansão em Mayfair que esconde horrores medievais. O Museu Penhew, de fachada inocente, é o coração europeu do culto.',
     clima: 'Oceânico temperado. Névoa quase constante, especialmente no outono e inverno. Chuva fina e frequente. Invernos frios e úmidos sem gelar, verões brandos. O tipo de clima que convida a ficar dentro de casa — longe do que está lá fora.',
-    mapa: null,
+    mapa: 'assets/img/mapas/inglaterra.png',
     culto: {
       nome: 'O Museu Penhew e a Ordem do Faraó Negro',
       foto: null,
@@ -48,7 +48,7 @@ const LOCAIS = [
     icone: 'bi-triangle',
     descricao: 'Cairo, 1925 — onde o Império Britânico se encontra com cinco mil anos de civilização. Os bazares do Khan el-Khalili guardam segredos entre especiarias e seda. Sob as areias do deserto, a lendária Pirâmide Sombria — que não aparece em nenhum mapa oficial — aguarda aqueles corajosos ou insensatos o suficiente para encontrá-la. O Egito é o coração espiritual do culto.',
     clima: 'Desértico quente (BWh). Verões brutais — 40°C+ em Cairo. Invernos amenos (15–20°C). Tempestades de areia (khamsin) na primavera. A noite no deserto é surpreendentemente fria. O sol é implacável e as sombras escondem mais do que oferecem abrigo.',
-    mapa: null,
+    mapa: 'assets/img/mapas/egito.png',
     culto: {
       nome: 'O Culto de Nyarlathotep — A Pirâmide Sombria',
       foto: null,
@@ -62,7 +62,7 @@ const LOCAIS = [
     icone: 'bi-tree',
     descricao: 'A África Oriental Britânica de 1925 é uma terra de contradições: colônias de fazendeiros europeus e tradições milenares tribais lado a lado. Nairóbi é a porta de entrada, mas a resposta está nas montanhas — no Monte Quênia, onde a expedição Carlyle encontrou algo enterrado havia milênios e perturbou um sono que não deveria ter sido perturbado.',
     clima: 'Tropical de altitude (Aw/Am). Nairóbi fica a 1.700m de altitude, o que suaviza o calor tropical. Duas estações das chuvas: março–maio (longa) e outubro–dezembro (curta). A savana é um mar de ouro na estação seca. As montanhas são perpetuamente frescas e, no alto, geladas.',
-    mapa: null,
+    mapa: 'assets/img/mapas/quenia.png',
     culto: {
       nome: 'Os Filhos do Faraó',
       foto: null,
@@ -76,7 +76,7 @@ const LOCAIS = [
     icone: 'bi-sun',
     descricao: 'O continente isolado de 1925 parece o fim do mundo — e talvez seja. Sydney é uma cidade moderna e cosmopolita, mas o verdadeiro perigo está no Outback: um interior vasto, árido e incompreensível onde o Dreamtime Aborigine e os mitos de Cthulhu se entrelaçam de formas que nenhum estudioso europeu preparou os investigadores para enfrentar.',
     clima: 'Variado por região. Sydney: temperado oceânico, verões quentes (lembre-se — dezembro é verão aqui), invernos brandos. Outback: árido extremo, +45°C no verão (hemisfério sul), noites geladas no inverno. Secas prolongadas. O sol australiano é diferente — mais próximo, mais implacável.',
-    mapa: null,
+    mapa: 'assets/img/mapas/australia.png',
     culto: {
       nome: 'A Irmandade do Sinal Negro',
       foto: null,
@@ -90,7 +90,7 @@ const LOCAIS = [
     icone: 'bi-yin-yang',
     descricao: 'Xangai, 1925 — a "Paris do Oriente" e a cidade mais internacionalizada da Ásia. Concessões francesas e britânicas dividem o território com o distrito chinês. Tríades, comerciantes de ópio, espiões e diplomatas dividem os mesmos salões de dança e fumeries. Nos subterrâneos da cidade, o capítulo final da campanha aguarda — o ritual supremo está prestes a ser completado.',
     clima: 'Subtropical úmido (Cfa). Verões abafados e úmidos, com tufões possíveis em setembro–outubro. Invernos frios mas raramente com neve. Primaveras e outonos são a melhor estação. Em 1925, outono — a cidade está no pico de sua beleza sombria.',
-    mapa: null,
+    mapa: 'assets/img/mapas/china.png',
     culto: {
       nome: 'O Culto da Língua de Prata',
       foto: null,
