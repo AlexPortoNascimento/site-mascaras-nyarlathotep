@@ -546,10 +546,21 @@ a:hover {
   margin-bottom: 1rem;
   background-color: var(--cor-pergaminho);
   border-radius: 0 var(--raio-borda) var(--raio-borda) 0;
+  transition: border-color var(--transicao-rapida);
 }
 
 .sessao-item:last-child {
   margin-bottom: 0;
+}
+
+.sessao-item:hover {
+  border-left-color: var(--cor-sepia-clr);
+}
+
+/* Sessão ainda não jogada — placeholder */
+.sessao-item--pendente {
+  border-left-color: var(--cor-tinta-suave);
+  opacity: 0.7;
 }
 
 .sessao-item .sessao-data {
@@ -559,20 +570,54 @@ a:hover {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--cor-sepia-esc);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Badge de data para sessões pendentes */
+.sessao-data--pendente {
+  color: var(--cor-tinta-suave) !important;
+  font-style: italic;
 }
 
 .sessao-item h4 {
   font-family: var(--fonte-subtitulo);
   font-size: 1rem;
   color: var(--cor-tinta);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
 }
 
 .sessao-item p {
   font-size: 0.95rem;
   color: var(--cor-tinta-media);
+  line-height: var(--altura-linha);
   margin-bottom: 0;
+}
+
+/* Nome do capítulo no header do accordion */
+.capitulo-nome {
+  flex: 1;
+}
+
+/* Contador de sessões jogadas (ex: "1/3") no header do accordion */
+.sessao-contagem {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background-color: var(--cor-sepia-esc);
+  color: var(--cor-pergaminho-clr);
+  border-radius: 2px;
+  padding: 0.2em 0.55em;
+  margin-left: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Contador quando accordion está aberto (botão não-collapsed) */
+.accordion-button:not(.collapsed) .sessao-contagem {
+  background-color: var(--cor-sepia);
+  color: var(--cor-tinta);
 }
 
 /* ─── MODAL TEMÁTICO ───────────────────────────────────────────────────────── */
