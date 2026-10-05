@@ -107,6 +107,12 @@ a:hover {
   border-bottom: 2px solid var(--cor-sepia-esc);
   box-shadow: var(--sombra-navbar);
   padding: 0.6rem 1rem;
+  /* Garante que a navbar fixed-top fique acima de qualquer stacking context do conteúdo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030; /* igual ao Bootstrap fixed-top, explícito para não ser sobrepostos */
 }
 
 .navbar-portal .navbar-brand {
@@ -154,6 +160,7 @@ a:hover {
   border-radius: var(--raio-borda);
   padding: 0.25rem 0;
   min-width: 11rem;
+  z-index: 1031; /* acima da navbar */
 }
 
 .navbar-portal .dropdown-item {
@@ -197,7 +204,7 @@ a:hover {
 /* ─── HERO SECTION ─────────────────────────────────────────────────────────── */
 
 .hero-bg {
-  position: relative;
+  position: relative; /* necessário para o ::before absolute funcionar corretamente */
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -218,6 +225,7 @@ a:hover {
   inset: 0;
   background: var(--overlay-hero);
   z-index: 0;
+  pointer-events: none; /* overlay não intercepta cliques — navbar e dropdowns funcionam normalmente */
 }
 
 .hero-bg > .hero-content {
@@ -360,6 +368,7 @@ a:hover {
   inset: 0;
   background: var(--overlay-page-header);
   z-index: 0;
+  pointer-events: none; /* overlay não intercepta cliques */
 }
 
 .page-header > * {
