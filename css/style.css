@@ -879,6 +879,196 @@ a:hover {
   transition: width 0.4s ease;
 }
 
+/* ─── CARDS DE MAPA / LOCAÇÃO (mapas.html) ─────────────────────────────────── */
+
+.card-mapa {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topo do card — contém a imagem e o botão de expansão */
+.card-mapa-topo {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagem do mapa */
+.card-mapa-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: var(--borda);
+  display: block;
+  transition: transform var(--transicao-lenta);
+}
+
+.card-mapa:hover .card-mapa-img {
+  transform: scale(1.03);
+}
+
+/* Botão de expandir mapa (sobrepõe a imagem no canto) */
+.btn-expandir-mapa {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background-color: rgba(43, 33, 23, 0.8);
+  color: var(--cor-sepia);
+  border: 1px solid var(--cor-sepia-esc);
+  border-radius: var(--raio-borda);
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
+}
+
+.btn-expandir-mapa:hover,
+.btn-expandir-mapa:focus {
+  background-color: var(--cor-sepia-esc);
+  color: var(--cor-pergaminho-clr);
+  outline: 2px solid var(--cor-sepia);
+  outline-offset: 1px;
+}
+
+/* Corpo do card */
+.card-mapa-corpo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Cabeçalho do card (ícone + nome + cidade) */
+.card-mapa-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-mapa-icone {
+  font-size: 1.6rem;
+  color: var(--cor-sepia);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.card-mapa-pais {
+  font-family: var(--fonte-subtitulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cor-tinta);
+  margin-bottom: 0.15rem;
+  line-height: 1.2;
+}
+
+.card-mapa-cidade {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.8rem;
+  color: var(--cor-tinta-suave);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* Descrição principal */
+.card-mapa-descricao {
+  font-size: 0.92rem;
+  color: var(--cor-tinta-media);
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+/* Bloco de clima */
+.card-mapa-clima {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.78rem;
+  color: var(--cor-tinta-suave);
+  letter-spacing: 0.02em;
+  background-color: var(--cor-pergaminho-esc);
+  border-left: 3px solid var(--cor-sepia-esc);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 var(--raio-borda) var(--raio-borda) 0;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* ─── BLOCO DO CULTO RESIDENTE ─────────────────────────────────────────────── */
+
+.culto-bloco {
+  border-top: var(--borda);
+  padding-top: 0.85rem;
+  margin-top: auto;
+}
+
+.culto-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.culto-header i {
+  color: var(--cor-sangue);
+  font-size: 0.85rem;
+}
+
+.culto-titulo {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-sangue);
+}
+
+/* Foto do culto */
+.culto-foto {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: var(--raio-borda);
+  border: 1px solid var(--cor-sangue);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* Placeholder da foto do culto */
+div.culto-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(122, 46, 46, 0.08);
+  color: var(--cor-sangue);
+}
+
+.culto-nome {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cor-sangue);
+  margin-bottom: 0.3rem;
+  font-style: italic;
+}
+
+.culto-descricao {
+  font-size: 0.85rem;
+  color: var(--cor-tinta-media);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ─── MODAL DE MAPA EXPANDIDO ──────────────────────────────────────────────── */
+
+.mapa-modal-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--raio-borda);
+}
+
 /* ─── MODAL TEMÁTICO ───────────────────────────────────────────────────────── */
 
 .modal-portal .modal-content {
