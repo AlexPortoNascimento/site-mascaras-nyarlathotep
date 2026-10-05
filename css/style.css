@@ -637,6 +637,18 @@ a:hover {
   margin-bottom: 0;
 }
 
+/* Container de resumos multi-parágrafo */
+.sessao-resumo p {
+  font-size: 0.95rem;
+  color: var(--cor-tinta-media);
+  line-height: var(--altura-linha);
+  margin-bottom: 0.75rem;
+}
+
+.sessao-resumo p:last-child {
+  margin-bottom: 0;
+}
+
 /* Nome do capítulo no header do accordion */
 .capitulo-nome {
   flex: 1;

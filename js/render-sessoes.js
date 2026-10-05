@@ -19,6 +19,23 @@
   'use strict';
 
   /**
+   * Converte texto com quebras de linha em parágrafos HTML.
+   * Linhas em branco separam parágrafos; \n simples vira espaço.
+   * @param {string} texto
+   * @returns {string} HTML com tags <p>
+   */
+  function textoParaParagrafos(texto) {
+    return texto
+      .trim()
+      .split(/\n\s*\n/)                          // divide por linha em branco
+      .filter(function (p) { return p.trim(); }) // remove blocos vazios
+      .map(function (p) {
+        return '<p>' + p.trim().replace(/\n/g, ' ') + '</p>';
+      })
+      .join('');
+  }
+
+  /**
    * Gera o HTML de um item de sessão dentro do accordion body.
    * @param {{ data: string, titulo: string, resumo: string }} sessao
    * @param {number} idxSessao - índice dentro do capítulo
@@ -34,7 +51,7 @@
       <article class="sessao-item${!temData ? ' sessao-item--pendente' : ''}" aria-label="${sessao.titulo}">
         ${badgeData}
         <h4>${sessao.titulo}</h4>
-        <p>${sessao.resumo}</p>
+        <div class="sessao-resumo">${textoParaParagrafos(sessao.resumo)}</div>
       </article>`.trim();
   }
 
