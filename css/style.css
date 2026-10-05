@@ -1,0 +1,645 @@
+/* =============================================================================
+   style.css — Estilos customizados do Portal da Campanha
+   Carregado APÓS Bootstrap 5 para sobrescrever variáveis e classes do framework
+   ============================================================================= */
+
+/* ─── RESET E BASE ─────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  font-size: var(--tamanho-base);
+  line-height: var(--altura-linha);
+  color: var(--cor-tinta);
+  background-color: var(--cor-pergaminho);
+  background-image: var(--bg-textura-global);
+  background-repeat: repeat;
+  min-height: 100vh;
+}
+
+/* ─── TIPOGRAFIA ───────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--fonte-subtitulo);
+  color: var(--cor-tinta);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+h1, .h1 { font-family: var(--fonte-titulo); letter-spacing: 0.06em; }
+h2, .h2 { font-family: var(--fonte-titulo); letter-spacing: 0.05em; }
+
+.display-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.subtitulo-tematico {
+  font-family: var(--fonte-corpo);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--cor-sepia);
+  letter-spacing: 0.03em;
+}
+
+a {
+  color: var(--cor-sepia-esc);
+  text-decoration: none;
+  transition: color var(--transicao-rapida);
+}
+
+a:hover {
+  color: var(--cor-sepia);
+}
+
+/* ─── NAVBAR ───────────────────────────────────────────────────────────────── */
+
+.navbar-portal {
+  background-color: var(--cor-tinta);
+  background-image: var(--bg-navbar);
+  background-size: cover;
+  border-bottom: 2px solid var(--cor-sepia-esc);
+  box-shadow: var(--sombra-navbar);
+  padding: 0.6rem 1rem;
+}
+
+.navbar-portal .navbar-brand {
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  color: var(--cor-sepia) !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color var(--transicao-rapida);
+}
+
+.navbar-portal .navbar-brand:hover {
+  color: var(--cor-sepia-clr) !important;
+}
+
+.navbar-portal .nav-link,
+.navbar-portal .dropdown-toggle {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-pergaminho) !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem !important;
+  transition: color var(--transicao-rapida);
+}
+
+.navbar-portal .nav-link:hover,
+.navbar-portal .dropdown-toggle:hover,
+.navbar-portal .nav-link.active {
+  color: var(--cor-sepia) !important;
+}
+
+.navbar-portal .dropdown-menu {
+  background-color: var(--cor-tinta);
+  border: var(--borda);
+  border-radius: var(--raio-borda);
+  padding: 0.25rem 0;
+  min-width: 11rem;
+}
+
+.navbar-portal .dropdown-item {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--cor-pergaminho);
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.2rem;
+  transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
+}
+
+.navbar-portal .dropdown-item:hover,
+.navbar-portal .dropdown-item:focus {
+  background-color: var(--cor-sepia-esc);
+  color: var(--cor-pergaminho-clr);
+}
+
+.navbar-portal .navbar-toggler {
+  border-color: var(--cor-sepia-esc);
+}
+
+.navbar-portal .navbar-toggler-icon {
+  filter: invert(1); /* Ícone hambúrguer branco sobre fundo escuro */
+}
+
+/* ─── HERO SECTION ─────────────────────────────────────────────────────────── */
+
+.hero-bg {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: var(--bg-hero);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;  /* efeito parallax leve */
+  background-color: var(--cor-tinta);  /* fallback quando sem imagem */
+  padding: var(--espacamento-xl) var(--espacamento-md);
+}
+
+/* Overlay escuro para legibilidade do texto sobre a imagem */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-hero);
+  z-index: 0;
+}
+
+.hero-bg > .hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+}
+
+.hero-bg .display-titulo {
+  color: var(--cor-sepia);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero-bg .subtitulo-tematico {
+  color: var(--cor-pergaminho);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* ─── PAGE HEADER (páginas internas) ──────────────────────────────────────── */
+
+.page-header {
+  position: relative;
+  padding: calc(var(--espacamento-xl) * 0.8) var(--espacamento-md) var(--espacamento-lg);
+  margin-top: 56px; /* compensar navbar fixed-top */
+  background-image: var(--bg-page-header);
+  background-size: cover;
+  background-position: center;
+  background-color: var(--cor-tinta);
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-page-header);
+  z-index: 0;
+}
+
+.page-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header h1 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-sepia);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.page-header .subtitulo-tematico {
+  color: var(--cor-pergaminho);
+}
+
+/* Separador ornamental abaixo dos títulos */
+.page-header h1::after,
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cor-sepia), transparent);
+  margin: 0.75rem auto 0;
+}
+
+/* ─── SEÇÕES GERAIS ────────────────────────────────────────────────────────── */
+
+.secao {
+  padding: var(--espacamento-lg) 0;
+}
+
+.secao-alt {
+  padding: var(--espacamento-lg) 0;
+  background-color: var(--cor-pergaminho-esc);
+}
+
+.section-title {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-tinta);
+  text-align: center;
+  margin-bottom: var(--espacamento-lg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ─── CARDS TEMÁTICOS ──────────────────────────────────────────────────────── */
+
+.card-portal {
+  background-color: var(--cor-pergaminho-clr);
+  border: var(--borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  transition: transform var(--transicao-padrao), box-shadow var(--transicao-padrao);
+  overflow: hidden;
+  height: 100%; /* Alinhar cards de mesma altura dentro do grid */
+}
+
+.card-portal:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-card-hover);
+}
+
+.card-portal .card-header {
+  background-color: var(--cor-tinta);
+  color: var(--cor-sepia);
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: var(--borda);
+  padding: 0.6rem 1rem;
+}
+
+.card-portal .card-title {
+  font-family: var(--fonte-subtitulo);
+  font-size: 1.1rem;
+  color: var(--cor-tinta);
+}
+
+.card-portal .card-text {
+  font-size: 0.95rem;
+  color: var(--cor-tinta-media);
+}
+
+/* ─── PLACEHOLDER DE IMAGEM ────────────────────────────────────────────────── */
+
+.placeholder-img {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--cor-pergaminho-esc),
+    var(--cor-pergaminho-esc) 10px,
+    var(--cor-pergaminho) 10px,
+    var(--cor-pergaminho) 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-tinta-suave);
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: var(--borda);
+}
+
+.placeholder-img-lg  { height: 220px; }
+.placeholder-img-md  { height: 160px; }
+.placeholder-img-sm  { height: 100px; }
+.placeholder-img-sq  { aspect-ratio: 1 / 1; height: auto; }
+
+/* ─── BADGES DE STATUS ─────────────────────────────────────────────────────── */
+
+.badge-status {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35em 0.75em;
+  border-radius: 2px;
+  border: 1px solid transparent;
+}
+
+.badge-vivo    { background-color: var(--status-vivo-bg);   color: var(--status-vivo-txt);   }
+.badge-morto   { background-color: var(--status-morto-bg);  color: var(--status-morto-txt);  }
+.badge-preso   { background-color: var(--status-preso-bg);  color: var(--status-preso-txt);  }
+.badge-ferido  { background-color: var(--status-ferido-bg); color: var(--status-ferido-txt); }
+
+/* ─── BOTÕES TEMÁTICOS ─────────────────────────────────────────────────────── */
+
+.btn-portal-primario {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-pergaminho-clr);
+  background-color: var(--cor-sepia-esc);
+  border: 1px solid var(--cor-sepia);
+  border-radius: var(--raio-borda);
+  padding: 0.6rem 1.5rem;
+  transition: background-color var(--transicao-rapida), color var(--transicao-rapida), box-shadow var(--transicao-rapida);
+}
+
+.btn-portal-primario:hover,
+.btn-portal-primario:focus {
+  background-color: var(--cor-sepia);
+  color: var(--cor-tinta);
+  box-shadow: 0 0 0 3px rgba(199, 168, 107, 0.35);
+}
+
+.btn-portal-secundario {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-sepia);
+  background-color: transparent;
+  border: 1px solid var(--cor-sepia);
+  border-radius: var(--raio-borda);
+  padding: 0.6rem 1.5rem;
+  transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
+}
+
+.btn-portal-secundario:hover,
+.btn-portal-secundario:focus {
+  background-color: var(--cor-sepia-esc);
+  color: var(--cor-pergaminho-clr);
+}
+
+/* ─── ACCORDION (sessoes.html) ─────────────────────────────────────────────── */
+
+.accordion-portal .accordion-item {
+  background-color: var(--cor-pergaminho-clr);
+  border: var(--borda);
+  border-radius: var(--raio-borda) !important;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.accordion-portal .accordion-button {
+  font-family: var(--fonte-subtitulo);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--cor-tinta);
+  background-color: var(--cor-pergaminho-esc);
+  border-bottom: var(--borda);
+  box-shadow: none;
+}
+
+.accordion-portal .accordion-button:not(.collapsed) {
+  color: var(--cor-sepia-esc);
+  background-color: var(--cor-tinta);
+  border-bottom: 1px solid var(--cor-sepia-esc);
+}
+
+.accordion-portal .accordion-button::after {
+  filter: sepia(1) saturate(4) hue-rotate(5deg); /* Seta dourada */
+}
+
+.accordion-portal .accordion-body {
+  background-color: var(--cor-pergaminho-clr);
+  padding: var(--espacamento-md);
+}
+
+/* ─── SESSÃO ITEM (dentro do accordion) ───────────────────────────────────── */
+
+.sessao-item {
+  border-left: 3px solid var(--cor-sepia);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--cor-pergaminho);
+  border-radius: 0 var(--raio-borda) var(--raio-borda) 0;
+}
+
+.sessao-item:last-child {
+  margin-bottom: 0;
+}
+
+.sessao-item .sessao-data {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-sepia-esc);
+  margin-bottom: 0.25rem;
+}
+
+.sessao-item h4 {
+  font-family: var(--fonte-subtitulo);
+  font-size: 1rem;
+  color: var(--cor-tinta);
+  margin-bottom: 0.5rem;
+}
+
+.sessao-item p {
+  font-size: 0.95rem;
+  color: var(--cor-tinta-media);
+  margin-bottom: 0;
+}
+
+/* ─── MODAL TEMÁTICO ───────────────────────────────────────────────────────── */
+
+.modal-portal .modal-content {
+  background-color: var(--cor-pergaminho-clr);
+  border: var(--borda-dupla);
+  border-radius: var(--raio-borda);
+  color: var(--cor-tinta);
+}
+
+.modal-portal .modal-header {
+  background-color: var(--cor-tinta);
+  border-bottom: 2px solid var(--cor-sepia-esc);
+  padding: 1rem 1.25rem;
+}
+
+.modal-portal .modal-title {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-sepia);
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+}
+
+.modal-portal .modal-header .btn-close {
+  filter: invert(1);
+}
+
+.modal-portal .modal-footer {
+  border-top: var(--borda);
+  background-color: var(--cor-pergaminho-esc);
+}
+
+/* ─── TABELA DE ATRIBUTOS (CoC 7e — dentro do modal) ──────────────────────── */
+
+.tabela-atributos {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: var(--espacamento-md);
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+}
+
+.tabela-atributos th {
+  background-color: var(--cor-tinta);
+  color: var(--cor-sepia);
+  padding: 0.4rem 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  border: 1px solid var(--cor-sepia-esc);
+}
+
+.tabela-atributos td {
+  background-color: var(--cor-pergaminho);
+  color: var(--cor-tinta);
+  padding: 0.4rem 0.75rem;
+  text-align: center;
+  border: 1px solid var(--borda-cor);
+}
+
+.tabela-atributos tr:hover td {
+  background-color: var(--cor-pergaminho-esc);
+}
+
+/* ─── FOOTER ───────────────────────────────────────────────────────────────── */
+
+.footer-portal {
+  background-color: var(--cor-tinta);
+  background-image: var(--bg-footer);
+  background-size: cover;
+  border-top: 2px solid var(--cor-sepia-esc);
+  color: var(--cor-pergaminho);
+  padding: var(--espacamento-lg) 0 var(--espacamento-md);
+}
+
+.footer-portal h5 {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  color: var(--cor-sepia);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-portal p,
+.footer-portal li,
+.footer-portal small {
+  color: var(--cor-pergaminho-esc);
+  font-size: 0.88rem;
+}
+
+.footer-portal a {
+  color: var(--cor-pergaminho-esc);
+  transition: color var(--transicao-rapida);
+}
+
+.footer-portal a:hover {
+  color: var(--cor-sepia);
+}
+
+.footer-portal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-portal ul li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-portal .footer-divider {
+  border-color: var(--cor-sepia-esc);
+  opacity: 0.4;
+  margin: var(--espacamento-md) 0 var(--espacamento-sm);
+}
+
+.footer-portal .footer-bottom {
+  text-align: center;
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--cor-tinta-suave);
+  text-transform: uppercase;
+}
+
+/* ─── UTILITÁRIOS TEMÁTICOS ────────────────────────────────────────────────── */
+
+/* Divisor ornamental */
+.divisor-ornamental {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: var(--espacamento-md) 0;
+  color: var(--cor-sepia-esc);
+}
+
+.divisor-ornamental::before,
+.divisor-ornamental::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cor-sepia-esc));
+}
+
+.divisor-ornamental::after {
+  background: linear-gradient(90deg, var(--cor-sepia-esc), transparent);
+}
+
+/* Texto de citação temático */
+.citacao-tematica {
+  border-left: 4px solid var(--cor-sepia);
+  padding: 0.75rem 1.25rem;
+  background-color: var(--cor-pergaminho-esc);
+  font-style: italic;
+  color: var(--cor-tinta-media);
+  margin: var(--espacamento-md) 0;
+  border-radius: 0 var(--raio-borda) var(--raio-borda) 0;
+}
+
+/* Classe de conteúdo principal — compensar navbar fixa */
+.conteudo-principal {
+  margin-top: 56px;
+  min-height: calc(100vh - 56px - 280px); /* 280px ≈ altura estimada do footer */
+}
+
+/* Sobrescrita do scroll-margin para âncoras abaixo da navbar fixa */
+[id] {
+  scroll-margin-top: 70px;
+}
+
+/* ─── RESPONSIVIDADE EXTRA ─────────────────────────────────────────────────── */
+
+@media (max-width: 575.98px) {
+  .display-titulo {
+    font-size: 1.8rem;
+  }
+
+  .hero-bg {
+    background-attachment: scroll; /* parallax desabilitado em mobile */
+  }
+
+  .secao,
+  .secao-alt {
+    padding: var(--espacamento-md) 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-portal .nav-link,
+  .navbar-portal .dropdown-toggle {
+    padding: 0.5rem 1rem !important;
+  }
+}

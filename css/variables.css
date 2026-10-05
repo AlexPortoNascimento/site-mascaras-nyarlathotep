@@ -1,0 +1,126 @@
+/* =============================================================================
+   variables.css — Fundação visual do Portal da Campanha
+   Máscaras de Nyarlathotep · Chamado de Cthulhu 7ª edição · Ambientado em 1925
+   =============================================================================
+
+   GUIA RÁPIDO DE PERSONALIZAÇÃO:
+   ─────────────────────────────────────────────────────────────────────────────
+   Para adicionar imagens de background, edite APENAS as variáveis da seção
+   "Hooks de Background" abaixo. O HTML e o JS NÃO precisam ser alterados.
+
+   Exemplo para ativar o hero:
+     --bg-hero: url('../assets/img/backgrounds/hero.jpg');
+
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+
+  /* ─── PALETA: Pulp Anos 1920 · Sépia & Pergaminho ─────────────────────── */
+
+  --cor-pergaminho:      #e8dcc0;   /* Fundo principal — papel envelhecido    */
+  --cor-pergaminho-esc:  #d5c9a8;   /* Fundo alternativo / cards              */
+  --cor-pergaminho-clr:  #f2ead4;   /* Fundo claro / offcanvas / modais       */
+
+  --cor-sepia:           #c7a86b;   /* Dourado opaco — destaque principal     */
+  --cor-sepia-esc:       #a3824f;   /* Dourado escuro — bordas / ornamentos   */
+  --cor-sepia-clr:       #dfc38a;   /* Dourado claro — hover                  */
+
+  --cor-tinta:           #2b2117;   /* Texto principal — marrom quase preto   */
+  --cor-tinta-media:     #4a3728;   /* Texto secundário / subtítulos          */
+  --cor-tinta-suave:     #7a6651;   /* Texto muted / placeholders             */
+
+  --cor-sangue:          #7a2e2e;   /* Acento dramático — mortes / alertas    */
+  --cor-sangue-esc:      #5c1f1f;   /* Hover de elementos de perigo           */
+  --cor-sangue-clr:      #a34040;   /* Badge de status MORTO                  */
+
+  --cor-verde-musgo:     #4a5a3a;   /* Acento secundário — cultos / mistério  */
+  --cor-verde-musgo-esc: #354229;   /* Hover / borda de elementos verdes      */
+  --cor-verde-musgo-clr: #6b7e56;   /* Badge de status VIVO                   */
+
+  --cor-ocre:            #b5651d;   /* Status GRAVEMENTE FERIDO               */
+  --cor-ocre-esc:        #8a4c15;   /* Hover de elementos de ocre             */
+
+  --cor-marrom-medio:    #6b5b3a;   /* Status PRESO / elementos neutros       */
+  --cor-marrom-medio-esc:#52462d;   /* Hover de elementos marrons             */
+
+  --cor-sombra:          rgba(43, 33, 23, 0.25);  /* Sombras suaves          */
+  --cor-sombra-forte:    rgba(43, 33, 23, 0.55);  /* Sombras fortes          */
+
+  /* ─── BADGE DE STATUS DE PERSONAGEM ───────────────────────────────────── */
+
+  --status-vivo-bg:      var(--cor-verde-musgo-clr);
+  --status-vivo-txt:     #f2ead4;
+
+  --status-morto-bg:     var(--cor-sangue-clr);
+  --status-morto-txt:    #f2ead4;
+
+  --status-preso-bg:     var(--cor-marrom-medio);
+  --status-preso-txt:    #f2ead4;
+
+  --status-ferido-bg:    var(--cor-ocre);
+  --status-ferido-txt:   #f2ead4;
+
+  /* ─── TIPOGRAFIA ART DÉCO ──────────────────────────────────────────────── */
+
+  --fonte-titulo:        'Cinzel Decorative', 'Cinzel', serif;  /* Títulos H1/H2 majestosos    */
+  --fonte-subtitulo:     'Cinzel', serif;                        /* Subtítulos / navbar / cards */
+  --fonte-corpo:         'EB Garamond', Georgia, serif;          /* Corpo de texto / resumos    */
+
+  --tamanho-base:        18px;      /* Tamanho base do corpo (EB Garamond legível) */
+  --altura-linha:        1.75;      /* Espaçamento generoso p/ texto serif         */
+
+  /* ─── BORDAS E ORNAMENTOS ──────────────────────────────────────────────── */
+
+  --borda-cor:           var(--cor-sepia-esc);
+  --borda-espessura:     1px;
+  --borda-estilo:        solid;
+  --borda:               var(--borda-espessura) var(--borda-estilo) var(--borda-cor);
+  --borda-dupla:         3px double var(--cor-sepia-esc);
+  --raio-borda:          4px;       /* Cantos levemente arredondados — mais "documento" */
+
+  /* ─── ESPAÇAMENTOS ─────────────────────────────────────────────────────── */
+
+  --espacamento-sm:      0.75rem;
+  --espacamento-md:      1.5rem;
+  --espacamento-lg:      3rem;
+  --espacamento-xl:      5rem;
+
+  /* ─── TRANSIÇÕES ───────────────────────────────────────────────────────── */
+
+  --transicao-rapida:    150ms ease-in-out;
+  --transicao-padrao:    300ms ease-in-out;
+  --transicao-lenta:     500ms ease-in-out;
+
+  /* ─── SOMBRA DE CAIXAS ─────────────────────────────────────────────────── */
+
+  --sombra-card:         0 2px 12px var(--cor-sombra);
+  --sombra-card-hover:   0 6px 24px var(--cor-sombra-forte);
+  --sombra-navbar:       0 2px 16px var(--cor-sombra-forte);
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     HOOKS DE BACKGROUND — EDITE AQUI PARA ADICIONAR IMAGENS
+     ═══════════════════════════════════════════════════════════════════════
+
+     Para ativar um background, substitua `none` por:
+       url('../assets/img/backgrounds/nome-do-arquivo.jpg')
+
+     Todos os outros atributos (size, position, overlay) já estão
+     configurados no style.css e serão aplicados automaticamente.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  --bg-hero:             none;      /* Hero da index.html                     */
+  --bg-textura-global:   none;      /* Textura de pergaminho em todo o body   */
+  --bg-page-header:      none;      /* Banner de topo das páginas internas    */
+  --bg-sessoes:          none;      /* Background específico da sessoes.html  */
+  --bg-personagens:      none;      /* Background específico de personagens   */
+  --bg-mapas:            none;      /* Background específico de mapas         */
+  --bg-navbar:           none;      /* Textura na navbar                      */
+  --bg-footer:           none;      /* Textura no footer                      */
+
+  /* Cor de sobreposição (overlay escuro) sobre os backgrounds — ajuste a
+     opacidade conforme a imagem escolhida para manter a legibilidade do texto */
+  --overlay-hero:        rgba(43, 33, 23, 0.60);
+  --overlay-page-header: rgba(43, 33, 23, 0.65);
+}
