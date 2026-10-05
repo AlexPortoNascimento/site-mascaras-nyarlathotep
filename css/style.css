@@ -620,6 +620,265 @@ a:hover {
   color: var(--cor-tinta);
 }
 
+/* ─── CARDS DE PERSONAGEM (personagens.html) ───────────────────────────────── */
+
+.card-personagem {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform var(--transicao-padrao), box-shadow var(--transicao-padrao);
+}
+
+.card-personagem:hover,
+.card-personagem:focus {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-card-hover);
+  outline: 2px solid var(--cor-sepia);
+  outline-offset: 2px;
+}
+
+/* Avatar */
+.card-personagem-avatar {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: var(--borda);
+  display: block;
+}
+
+/* Corpo do card */
+.card-personagem-corpo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Linha topo: tipo + badge status */
+.card-personagem-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.card-personagem-tipo {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-tinta-suave);
+}
+
+/* Nome */
+.card-personagem-nome {
+  font-family: var(--fonte-subtitulo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cor-tinta);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+/* Ocupação */
+.card-personagem-ocupacao {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.82rem;
+  color: var(--cor-tinta-suave);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+
+/* Bio curta */
+.card-personagem-bio {
+  font-size: 0.9rem;
+  color: var(--cor-tinta-media);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 0.75rem;
+}
+
+/* Rodapé do card */
+.card-personagem-rodape {
+  border-top: 1px solid var(--cor-pergaminho-esc);
+  padding-top: 0.6rem;
+  margin-top: auto;
+}
+
+.card-personagem-ver {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-sepia-esc);
+  transition: color var(--transicao-rapida);
+}
+
+.card-personagem:hover .card-personagem-ver,
+.card-personagem:focus .card-personagem-ver {
+  color: var(--cor-sepia);
+}
+
+/* ─── FILTROS DE PERSONAGEM ────────────────────────────────────────────────── */
+
+/* Os botões [data-filtro] usam as classes btn-portal-* existentes */
+/* Transição suave ao trocar estado ativo */
+[data-filtro] {
+  transition: background-color var(--transicao-rapida),
+              color var(--transicao-rapida),
+              border-color var(--transicao-rapida);
+}
+
+/* ─── FICHA MODAL CoC 7e ───────────────────────────────────────────────────── */
+
+.ficha-modal-conteudo {
+  font-family: var(--fonte-corpo);
+}
+
+/* Cabeçalho */
+.ficha-cabecalho {
+  flex-wrap: wrap;
+}
+
+.ficha-avatar-modal {
+  flex-shrink: 0;
+}
+
+.ficha-avatar-img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: var(--raio-borda);
+  border: var(--borda);
+}
+
+.ficha-avatar-placeholder {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-pergaminho-esc);
+  border: var(--borda);
+  border-radius: var(--raio-borda);
+  color: var(--cor-tinta-suave);
+  font-size: 3rem;
+}
+
+.ficha-tipo-label {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-tinta-suave);
+}
+
+.ficha-ocupacao-modal {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.9rem;
+  color: var(--cor-tinta-media);
+  font-style: italic;
+}
+
+.ficha-bio-modal {
+  font-size: 0.95rem;
+  color: var(--cor-tinta-media);
+  line-height: var(--altura-linha);
+  margin: 0;
+}
+
+/* Estatísticas vitais (SAN / PV / PM) */
+.ficha-vitais {
+  background-color: var(--cor-tinta);
+  border-radius: var(--raio-borda);
+  padding: 0.75rem 1rem;
+}
+
+.ficha-vital-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.ficha-vital-label {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-tinta-suave);
+}
+
+.ficha-vital-valor {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cor-sepia);
+  line-height: 1.1;
+}
+
+/* Título de seção dentro do modal */
+.ficha-secao-titulo {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-sepia-esc);
+  border-bottom: 1px solid var(--cor-pergaminho-esc);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Barras de habilidades */
+.ficha-habilidades {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ficha-habilidade {
+  /* container de cada habilidade */
+}
+
+.ficha-hab-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+
+.ficha-hab-nome {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.82rem;
+  color: var(--cor-tinta);
+}
+
+.ficha-hab-valor {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cor-sepia-esc);
+}
+
+.ficha-hab-barra-bg {
+  height: 6px;
+  background-color: var(--cor-pergaminho-esc);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ficha-hab-barra {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cor-sepia-esc), var(--cor-sepia));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
 /* ─── MODAL TEMÁTICO ───────────────────────────────────────────────────────── */
 
 .modal-portal .modal-content {
