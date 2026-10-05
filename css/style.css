@@ -103,8 +103,16 @@ a:hover {
 
 .navbar-portal .nav-link:hover,
 .navbar-portal .dropdown-toggle:hover,
-.navbar-portal .nav-link.active {
+.navbar-portal .nav-link.active,
+.navbar-portal .dropdown-toggle.active {
   color: var(--cor-sepia) !important;
+}
+
+/* Indicador underline para link/toggle ativo */
+.navbar-portal .nav-link.active,
+.navbar-portal .dropdown-toggle.active {
+  border-bottom: 2px solid var(--cor-sepia);
+  padding-bottom: calc(0.5rem - 2px) !important;
 }
 
 .navbar-portal .dropdown-menu {
@@ -129,6 +137,20 @@ a:hover {
 .navbar-portal .dropdown-item:focus {
   background-color: var(--cor-sepia-esc);
   color: var(--cor-pergaminho-clr);
+}
+
+/* Item ativo dentro do dropdown — marca a página atual */
+.navbar-portal .dropdown-item.active,
+.navbar-portal .dropdown-item:active {
+  background-color: var(--cor-sepia);
+  color: var(--cor-tinta);
+  font-weight: 600;
+}
+
+/* Separador visual entre itens do dropdown */
+.navbar-portal .dropdown-divider {
+  border-color: var(--cor-sepia-esc);
+  opacity: 0.4;
 }
 
 .navbar-portal .navbar-toggler {
@@ -513,6 +535,22 @@ a:hover {
   background-color: var(--cor-pergaminho-esc);
 }
 
+/* ─── COUNTDOWN ────────────────────────────────────────────────────────────── */
+
+.countdown-unidade {
+  min-width: 4rem;
+}
+
+.countdown-label-unidade {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-tinta-suave);
+  margin-top: 0.25rem;
+}
+
 /* ─── FOOTER ───────────────────────────────────────────────────────────────── */
 
 .footer-portal {
@@ -641,5 +679,24 @@ a:hover {
   .navbar-portal .nav-link,
   .navbar-portal .dropdown-toggle {
     padding: 0.5rem 1rem !important;
+  }
+}
+
+/* Em mobile (menu colapsado), troca indicador de border-bottom por border-left */
+@media (max-width: 991.98px) {
+  .navbar-portal .nav-link.active,
+  .navbar-portal .dropdown-toggle.active {
+    border-bottom: none;
+    border-left: 3px solid var(--cor-sepia);
+    padding-left: calc(1rem - 3px) !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .navbar-portal .dropdown-menu {
+    background-color: rgba(43, 33, 23, 0.85);
+    border: none;
+    border-left: 2px solid var(--cor-sepia-esc);
+    margin-left: 1rem;
+    padding-left: 0.5rem;
   }
 }
