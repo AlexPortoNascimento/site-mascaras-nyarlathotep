@@ -37,6 +37,9 @@
 </head>
 <body>
 
+  <!-- Skip link para acessibilidade (leitores de tela) -->
+  <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-portal" aria-label="Navegação principal">
     <div class="container">
@@ -94,16 +97,11 @@
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="conteudo-principal secao" id="timeline" aria-label="Sessões por capítulo">
-    <div class="container">
+  <main class="conteudo-principal secao" id="conteudo-principal" aria-label="Sessões por capítulo">
+    <div class="container" id="timeline">
 
-      <!-- Accordion de capítulos — preenchido por render-sessoes.js (Task 6) -->
+      <!-- Accordion de capítulos — preenchido por render-sessoes.js -->
       <div id="accordion-capitulos" class="accordion-portal accordion" aria-label="Capítulos da campanha">
-        <!-- Placeholder para Task 1 -->
-        <p class="text-center" style="color: var(--cor-tinta-suave); font-style: italic; padding: 2rem 0;">
-          <i class="bi bi-hourglass-split me-2" aria-hidden="true"></i>
-          As crônicas serão carregadas aqui. (Implementado na Task 6)
-        </p>
       </div>
 
     </div>

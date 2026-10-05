@@ -15,6 +15,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Skip link de acessibilidade — visível apenas quando em foco (Tab) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.5rem 1rem;
+  background-color: var(--cor-sepia);
+  color: var(--cor-tinta);
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 0 0 var(--raio-borda) var(--raio-borda);
+  text-decoration: none;
+  transition: top var(--transicao-rapida);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--cor-tinta);
+  outline-offset: 2px;
+}
+
 body {
   font-family: var(--fonte-corpo);
   font-size: var(--tamanho-base);
@@ -25,6 +50,14 @@ body {
   background-repeat: repeat;
   min-height: 100vh;
 }
+
+/* Backgrounds específicos por página (ativados via variáveis CSS em variables.css) */
+[data-page="sessoes"]     body,
+body[data-page="sessoes"] { background-image: var(--bg-sessoes, var(--bg-textura-global)); }
+[data-page="personagens"]     body,
+body[data-page="personagens"] { background-image: var(--bg-personagens, var(--bg-textura-global)); }
+[data-page="mapas"]     body,
+body[data-page="mapas"] { background-image: var(--bg-mapas, var(--bg-textura-global)); }
 
 /* ─── TIPOGRAFIA ───────────────────────────────────────────────────────────── */
 
@@ -1187,6 +1220,15 @@ div.culto-foto {
   .countdown-unidade {
     min-width: 2.8rem;
   }
+}
+
+/* Mensagem de status do countdown (expirado / em andamento) */
+.countdown-mensagem {
+  font-family: var(--fonte-subtitulo);
+  font-size: 0.85rem;
+  color: var(--cor-tinta-suave);
+  letter-spacing: 0.06em;
+  min-height: 1.4em; /* evita layout shift quando a mensagem aparece */
 }
 
 /* ─── ROLADOR DE DADOS (index.html) ────────────────────────────────────────── */

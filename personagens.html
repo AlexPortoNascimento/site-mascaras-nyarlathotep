@@ -37,6 +37,9 @@
 </head>
 <body>
 
+  <!-- Skip link para acessibilidade (leitores de tela) -->
+  <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-portal" aria-label="Navegação principal">
     <div class="container">
@@ -94,22 +97,22 @@
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="conteudo-principal" aria-label="Grid de personagens">
+  <main class="conteudo-principal" id="conteudo-principal" aria-label="Grid de personagens">
 
     <!-- Filtros -->
     <section class="secao-alt py-3" id="filtros" aria-label="Filtrar personagens por tipo">
       <div class="container">
         <div class="d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="Filtros de tipo de personagem">
-          <button class="btn-portal-primario" data-filtro="todos" aria-pressed="true">
+          <button type="button" class="btn-portal-primario" data-filtro="todos" aria-pressed="true">
             <i class="bi bi-grid me-1" aria-hidden="true"></i>Todos
           </button>
-          <button class="btn-portal-secundario" data-filtro="PJ" aria-pressed="false">
+          <button type="button" class="btn-portal-secundario" data-filtro="PJ" aria-pressed="false">
             <i class="bi bi-person-fill me-1" aria-hidden="true"></i>Protagonistas (PJ)
           </button>
-          <button class="btn-portal-secundario" data-filtro="PNJ" aria-pressed="false">
+          <button type="button" class="btn-portal-secundario" data-filtro="PNJ" aria-pressed="false">
             <i class="bi bi-person-lines-fill me-1" aria-hidden="true"></i>Aliados (PNJ)
           </button>
-          <button class="btn-portal-secundario" data-filtro="Antagonista" aria-pressed="false">
+          <button type="button" class="btn-portal-secundario" data-filtro="Antagonista" aria-pressed="false">
             <i class="bi bi-person-x-fill me-1" aria-hidden="true"></i>Antagonistas
           </button>
         </div>
@@ -120,11 +123,7 @@
     <section class="secao" id="grid-personagens-section">
       <div class="container">
         <div class="row g-4" id="grid-personagens" aria-live="polite" aria-label="Lista de personagens">
-          <!-- Cards gerados por render-personagens.js (Task 7) -->
-          <div class="col-12 text-center" style="color: var(--cor-tinta-suave); font-style: italic; padding: 2rem 0;">
-            <i class="bi bi-hourglass-split me-2" aria-hidden="true"></i>
-            Os personagens serão carregados aqui. (Implementado nas Tasks 7 e 8)
-          </div>
+          <!-- Cards gerados por render-personagens.js -->
         </div>
       </div>
     </section>

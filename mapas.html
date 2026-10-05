@@ -37,6 +37,9 @@
 </head>
 <body>
 
+  <!-- Skip link para acessibilidade (leitores de tela) -->
+  <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-portal" aria-label="Navegação principal">
     <div class="container">
@@ -94,16 +97,12 @@
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="conteudo-principal secao" aria-label="Grid de locações">
+  <main class="conteudo-principal secao" id="conteudo-principal" aria-label="Grid de locações">
     <div class="container">
 
       <!-- Grid de países — preenchido por render-mapas.js (Task 9) -->
       <div class="row g-4" id="grid-locais" aria-live="polite" aria-label="Lista de países e locações">
-        <!-- Placeholder para Task 1 -->
-        <div class="col-12 text-center" style="color: var(--cor-tinta-suave); font-style: italic; padding: 2rem 0;">
-          <i class="bi bi-hourglass-split me-2" aria-hidden="true"></i>
-          Os mapas e locações serão carregados aqui. (Implementado na Task 9)
-        </div>
+        <!-- Cards gerados por render-mapas.js -->
       </div>
 
     </div>
