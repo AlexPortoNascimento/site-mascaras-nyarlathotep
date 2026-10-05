@@ -1,26 +1,9 @@
-/**
- * render-personagens.js — Renderiza cards, filtros e modal de fichas em personagens.html.
- *
- * Task 7: cards + filtro dinâmico (Todos / PJ / PNJ / Antagonista)
- * Task 8: modal de ficha detalhada CoC 7e (abrirFicha)
- *
- * Lê PERSONAGENS (data/personagens.js) e opera sobre:
- *   #grid-personagens  — container do grid de cards
- *   [data-filtro]      — botões de filtro na barra
- *   #ficha-modal       — modal Bootstrap (populado em Task 8)
- */
-
 (function () {
   'use strict';
 
-  // Filtro ativo no momento (começa em 'todos')
   let filtroAtivo = 'todos';
 
-  // ─── Helpers ────────────────────────────────────────────────────────────────
 
-  /**
-   * Mapa tipo → classe CSS do badge de status.
-   */
   const BADGE_STATUS = {
     'Vivo':   'badge-vivo',
     'Morto':  'badge-morto',
@@ -28,21 +11,12 @@
     'Ferido': 'badge-ferido',
   };
 
-  /**
-   * Mapa tipo de personagem → ícone Bootstrap Icons.
-   */
   const ICONE_TIPO = {
     'PJ':          'bi-person-fill',
     'PNJ':         'bi-person-lines-fill',
     'Antagonista': 'bi-person-x-fill',
   };
 
-  /**
-   * Retorna HTML do bloco de imagem do avatar (real ou placeholder).
-   * @param {string|null} src
-   * @param {string} nome
-   * @returns {string}
-   */
   function htmlAvatar(src, nome) {
     if (src) {
       return `<img
@@ -57,11 +31,6 @@
     </div>`;
   }
 
-  /**
-   * Gera o HTML completo de um card de personagem.
-   * @param {Object} p - objeto de personagem
-   * @returns {string}
-   */
   function htmlCard(p) {
     const badgeCls  = BADGE_STATUS[p.status]  || 'badge-vivo';
     const iconeTipo = ICONE_TIPO[p.tipo]       || 'bi-person';
@@ -100,12 +69,6 @@
       </div>`.trim();
   }
 
-  // ─── Renderização ────────────────────────────────────────────────────────────
-
-  /**
-   * Renderiza todos os cards no #grid-personagens.
-   * Chamado uma única vez no DOMContentLoaded.
-   */
   function renderCards() {
     const grid = document.getElementById('grid-personagens');
     if (!grid) return;
@@ -121,10 +84,6 @@
     grid.innerHTML = PERSONAGENS.map(htmlCard).join('\n');
   }
 
-  /**
-   * Aplica o filtro de tipo — alterna visibilidade dos cards via d-none.
-   * @param {string} tipo - 'todos' | 'PJ' | 'PNJ' | 'Antagonista'
-   */
   function aplicarFiltro(tipo) {
     filtroAtivo = tipo;
 
@@ -137,13 +96,11 @@
       col.classList.toggle('d-none', !visivel);
     });
 
-    // Atualiza estado visual e aria-pressed dos botões
     const botoes = document.querySelectorAll('[data-filtro]');
     botoes.forEach(function (btn) {
       const ativo = btn.getAttribute('data-filtro') === tipo;
       btn.setAttribute('aria-pressed', ativo ? 'true' : 'false');
 
-      // Troca entre btn-portal-primario e btn-portal-secundario
       if (ativo) {
         btn.classList.add('btn-portal-primario');
         btn.classList.remove('btn-portal-secundario');
@@ -154,14 +111,6 @@
     });
   }
 
-  // ─── Modal de ficha (implementado na Task 8) ─────────────────────────────────
-
-  /**
-   * Abre o modal de ficha com os dados do personagem de id `pid`.
-   * O corpo do modal é preenchido em Task 8; aqui apenas abre o modal vazio
-   * com o título correto para garantir que o clique no card funciona.
-   * @param {string} pid - id do personagem
-   */
   function abrirFicha(pid) {
     const personagem = PERSONAGENS.find(function (p) { return p.id === pid; });
     if (!personagem) return;
@@ -171,8 +120,6 @@
 
     if (elTitulo) elTitulo.textContent = personagem.nome;
 
-    // Conteúdo detalhado implementado na Task 8
-    // Por ora exibe placeholder funcional para validar o modal
     if (elCorpo) {
       elCorpo.innerHTML = htmlFichaCompleta(personagem);
     }
@@ -184,16 +131,9 @@
     }
   }
 
-  /**
-   * Gera o HTML do corpo do modal com a ficha completa CoC 7e.
-   * Implementado aqui para as Tasks 7+8 ficarem num único arquivo.
-   * @param {Object} p - personagem
-   * @returns {string}
-   */
   function htmlFichaCompleta(p) {
     const badgeCls = BADGE_STATUS[p.status] || 'badge-vivo';
 
-    // Tabela de atributos principais
     const ATTRS = ['FOR', 'CON', 'TAM', 'DES', 'APA', 'INT', 'POD', 'EDU'];
     const atrsHtml = ATTRS.map(function (attr) {
       const val = p.atributos[attr] || '—';
@@ -207,7 +147,6 @@
       </tr>`;
     }).join('');
 
-    // Barras de habilidades
     const habsHtml = (p.habilidades || []).map(function (h) {
       const pct = Math.min(100, h.valor);
       return `
@@ -284,18 +223,11 @@
       </div>`.trim();
   }
 
-  // ─── Eventos ─────────────────────────────────────────────────────────────────
-
-  /**
-   * Inicializa toda a lógica da página de personagens.
-   */
   function iniciar() {
     if (typeof PERSONAGENS === 'undefined') return;
 
-    // 1. Renderiza os cards
     renderCards();
 
-    // 2. Filtros — delegação de eventos no container
     const barraFiltros = document.getElementById('filtros');
     if (barraFiltros) {
       barraFiltros.addEventListener('click', function (e) {
@@ -305,16 +237,13 @@
       });
     }
 
-    // 3. Abertura de modal — delegação de eventos no grid
     const grid = document.getElementById('grid-personagens');
     if (grid) {
-      // Clique
       grid.addEventListener('click', function (e) {
         const card = e.target.closest('[data-id]');
         if (!card) return;
         abrirFicha(card.getAttribute('data-id'));
       });
-      // Enter/Space no teclado (acessibilidade — card tem tabindex="0")
       grid.addEventListener('keydown', function (e) {
         if (e.key !== 'Enter' && e.key !== ' ') return;
         const card = e.target.closest('[data-id]');

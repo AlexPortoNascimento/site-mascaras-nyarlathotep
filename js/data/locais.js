@@ -1,14 +1,3 @@
-/**
- * data/locais.js — Banco de dados das locações da campanha.
- *
- * Para adicionar imagem de mapa ou do culto, substitua null pelo caminho:
- *   mapa: 'assets/img/mapas/peru.jpg'
- *   culto: { foto: 'assets/img/locais/culto-peru.jpg', ... }
- *
- * Os hooks de imagem são variáveis CSS — veja css/variables.css para detalhes.
- */
-
-// eslint-disable-next-line no-unused-vars
 const LOCAIS = [
   {
     id: 'peru',

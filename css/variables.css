@@ -64,13 +64,12 @@
 
   /* ─── TIPOGRAFIA ART DÉCO ──────────────────────────────────────────────── */
 
-  --fonte-titulo:        'Cinzel Decorative', 'Cinzel', serif;  /* Títulos H1/H2 majestosos    */
-  --fonte-subtitulo:     'Cinzel', serif;                        /* Subtítulos / navbar / cards */
-  --fonte-corpo:         'EB Garamond', Georgia, serif;          /* Corpo de texto / resumos    */
+  --fonte-titulo:        'Cinzel Decorative', 'Cinzel', serif;
+  --fonte-subtitulo:     'Cinzel', serif;
+  --fonte-corpo:         'EB Garamond', Georgia, serif;
 
-  --tamanho-base:        18px;      /* Tamanho base do corpo (EB Garamond legível) */
-  --altura-linha:        1.75;      /* Espaçamento generoso p/ texto serif         */
-
+  --tamanho-base:        18px;
+  --altura-linha:        1.75;
   /* ─── BORDAS E ORNAMENTOS ──────────────────────────────────────────────── */
 
   --borda-cor:           var(--cor-sepia-esc);
@@ -78,8 +77,7 @@
   --borda-estilo:        solid;
   --borda:               var(--borda-espessura) var(--borda-estilo) var(--borda-cor);
   --borda-dupla:         3px double var(--cor-sepia-esc);
-  --raio-borda:          4px;       /* Cantos levemente arredondados — mais "documento" */
-
+  --raio-borda:          4px;
   /* ─── ESPAÇAMENTOS ─────────────────────────────────────────────────────── */
 
   --espacamento-sm:      0.75rem;
@@ -110,17 +108,15 @@
      configurados no style.css e serão aplicados automaticamente.
      ═══════════════════════════════════════════════════════════════════════ */
 
-  --bg-hero:             none;      /* Hero da index.html                     */
-  --bg-textura-global:   none;      /* Textura de pergaminho em todo o body   */
-  --bg-page-header:      none;      /* Banner de topo das páginas internas    */
-  --bg-sessoes:          none;      /* Background específico da sessoes.html  */
-  --bg-personagens:      none;      /* Background específico de personagens   */
-  --bg-mapas:            none;      /* Background específico de mapas         */
-  --bg-navbar:           none;      /* Textura na navbar                      */
-  --bg-footer:           none;      /* Textura no footer                      */
+  --bg-hero:             none;
+  --bg-textura-global:   none;
+  --bg-page-header:      none;
+  --bg-sessoes:          none;
+  --bg-personagens:      none;
+  --bg-mapas:            none;
+  --bg-navbar:           none;
+  --bg-footer:           none;
 
-  /* Cor de sobreposição (overlay escuro) sobre os backgrounds — ajuste a
-     opacidade conforme a imagem escolhida para manter a legibilidade do texto */
   --overlay-hero:        rgba(43, 33, 23, 0.60);
   --overlay-page-header: rgba(43, 33, 23, 0.65);
 }

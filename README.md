@@ -161,23 +161,6 @@ culto: {
 
 ---
 
-## 🏗️ Status de Implementação (Tasks)
-
-| # | Task | Status |
-|---|------|--------|
-| 1 | Esqueleto, fundação visual e CSS | ✅ Concluído |
-| 2 | Navbar e Footer reutilizáveis | ✅ Concluído |
-| 3 | Hero + Destaques da index | ✅ Concluído |
-| 4 | Contagem regressiva | ✅ Concluído |
-| 5 | Rolador de dados | ✅ Concluído |
-| 6 | Dados e accordion de Sessões | ✅ Concluído |
-| 7 | Dados e cards de Personagens + filtro | ✅ Concluído |
-| 8 | Modal de ficha CoC 7e | ✅ Concluído |
-| 9 | Dados e grid de Mapas/Locações | ✅ Concluído |
-| 10 | Polimento, acessibilidade, documentação | ✅ Concluído |
-
----
-
 ## 📜 Créditos
 
 - *Chamado de Cthulhu* e *Máscaras de Nyarlathotep* são marcas registradas da **Chaosium Inc.**

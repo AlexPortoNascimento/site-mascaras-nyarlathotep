@@ -1,27 +1,6 @@
-/**
- * render-mapas.js — Renderiza o grid de locações e modal de mapa em mapas.html.
- *
- * Lê LOCAIS (data/locais.js) e gera os cards de país com:
- *  - imagem do mapa (real ou placeholder)
- *  - nome do país + cidade
- *  - descrição e clima
- *  - bloco do culto residente (foto + nome + descrição)
- *  - botão "Expandir mapa" → modal #mapa-modal
- *
- * Delegação de eventos no #grid-locais para o botão de expansão.
- */
-
 (function () {
   'use strict';
 
-  // ─── Helpers ────────────────────────────────────────────────────────────────
-
-  /**
-   * Gera bloco de imagem de mapa — real ou placeholder temático.
-   * @param {string|null} src
-   * @param {string} pais
-   * @returns {string}
-   */
   function htmlImagemMapa(src, pais) {
     if (src) {
       return `<img
@@ -36,12 +15,6 @@
     </div>`;
   }
 
-  /**
-   * Gera bloco do culto residente.
-   * @param {{ nome, foto, descricao }} culto
-   * @param {string} pais
-   * @returns {string}
-   */
   function htmlCulto(culto, pais) {
     const fotoHtml = culto.foto
       ? `<img src="${culto.foto}" alt="Culto em ${pais}" class="culto-foto" loading="lazy" />`
@@ -61,11 +34,6 @@
       </div>`.trim();
   }
 
-  /**
-   * Gera o HTML completo do card de uma locação.
-   * @param {Object} local
-   * @returns {string}
-   */
   function htmlCard(local) {
     const temMapa = !!local.mapa;
 
@@ -115,11 +83,6 @@
       </div>`.trim();
   }
 
-  // ─── Renderização ────────────────────────────────────────────────────────────
-
-  /**
-   * Renderiza todos os cards no #grid-locais.
-   */
   function renderLocais() {
     const grid = document.getElementById('grid-locais');
     if (!grid) return;
@@ -135,13 +98,6 @@
     grid.innerHTML = LOCAIS.map(htmlCard).join('\n');
   }
 
-  // ─── Modal de expansão de mapa ───────────────────────────────────────────────
-
-  /**
-   * Abre o modal #mapa-modal com a imagem ampliada do mapa.
-   * @param {string} src    - URL da imagem
-   * @param {string} pais   - nome do país (para título e alt)
-   */
   function expandirMapa(src, pais) {
     const elTitulo = document.getElementById('mapa-modal-titulo');
     const elCorpo  = document.getElementById('mapa-modal-corpo');
@@ -162,17 +118,11 @@
     }
   }
 
-  // ─── Eventos ─────────────────────────────────────────────────────────────────
-
-  /**
-   * Inicializa a página: renderiza cards e registra eventos.
-   */
   function iniciar() {
     if (typeof LOCAIS === 'undefined') return;
 
     renderLocais();
 
-    // Delegação de eventos no grid — botão de expansão de mapa
     const grid = document.getElementById('grid-locais');
     if (grid) {
       grid.addEventListener('click', function (e) {

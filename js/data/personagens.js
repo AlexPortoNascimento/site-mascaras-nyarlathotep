@@ -1,26 +1,3 @@
-/**
- * data/personagens.js — Banco de dados dos personagens da campanha.
- *
- * Para adicionar um personagem, insira um objeto no array PERSONAGENS:
- *
- *   {
- *     id: 'slug-unico',
- *     nome: 'Nome Completo',
- *     ocupacao: 'Ocupação',
- *     tipo: 'PJ' | 'PNJ' | 'Antagonista',
- *     status: 'Vivo' | 'Morto' | 'Preso' | 'Ferido',
- *     avatar: 'assets/img/personagens/nome.jpg',  // null para placeholder
- *     bioCurta: 'Texto curto para o card.',
- *     bioCompleta: 'Texto longo para o modal.',
- *     atributos: { FOR, CON, TAM, DES, APA, INT, POD, EDU },  // 1–100
- *     sanidade: 65,
- *     pv: 12,
- *     pm: 13,
- *     habilidades: [{ nome: 'Perícia', valor: 60 }],
- *   }
- */
-
-// eslint-disable-next-line no-unused-vars
 const PERSONAGENS = [
 
   // ─── PROTAGONISTAS (PJ) ──────────────────────────────────────────────────

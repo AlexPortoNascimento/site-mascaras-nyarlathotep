@@ -15,7 +15,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Skip link de acessibilidade — visível apenas quando em foco (Tab) */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -51,7 +50,6 @@ body {
   min-height: 100vh;
 }
 
-/* Backgrounds específicos por página (ativados via variáveis CSS em variables.css) */
 [data-page="sessoes"]     body,
 body[data-page="sessoes"] { background-image: var(--bg-sessoes, var(--bg-textura-global)); }
 [data-page="personagens"]     body,
@@ -107,12 +105,11 @@ a:hover {
   border-bottom: 2px solid var(--cor-sepia-esc);
   box-shadow: var(--sombra-navbar);
   padding: 0.6rem 1rem;
-  /* Garante que a navbar fixed-top fique acima de qualquer stacking context do conteúdo */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1030; /* igual ao Bootstrap fixed-top, explícito para não ser sobrepostos */
+  z-index: 1030;
 }
 
 .navbar-portal .navbar-brand {
@@ -147,7 +144,6 @@ a:hover {
   color: var(--cor-sepia) !important;
 }
 
-/* Indicador underline para link/toggle ativo */
 .navbar-portal .nav-link.active,
 .navbar-portal .dropdown-toggle.active {
   border-bottom: 2px solid var(--cor-sepia);
@@ -160,7 +156,7 @@ a:hover {
   border-radius: var(--raio-borda);
   padding: 0.25rem 0;
   min-width: 11rem;
-  z-index: 1031; /* acima da navbar */
+  z-index: 1031;
 }
 
 .navbar-portal .dropdown-item {
@@ -179,7 +175,6 @@ a:hover {
   color: var(--cor-pergaminho-clr);
 }
 
-/* Item ativo dentro do dropdown — marca a página atual */
 .navbar-portal .dropdown-item.active,
 .navbar-portal .dropdown-item:active {
   background-color: var(--cor-sepia);
@@ -187,7 +182,6 @@ a:hover {
   font-weight: 600;
 }
 
-/* Separador visual entre itens do dropdown */
 .navbar-portal .dropdown-divider {
   border-color: var(--cor-sepia-esc);
   opacity: 0.4;
@@ -198,13 +192,13 @@ a:hover {
 }
 
 .navbar-portal .navbar-toggler-icon {
-  filter: invert(1); /* Ícone hambúrguer branco sobre fundo escuro */
+  filter: invert(1);
 }
 
 /* ─── HERO SECTION ─────────────────────────────────────────────────────────── */
 
 .hero-bg {
-  position: relative; /* necessário para o ::before absolute funcionar corretamente */
+  position: relative;
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -213,19 +207,18 @@ a:hover {
   background-image: var(--bg-hero);
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;  /* efeito parallax leve */
-  background-color: var(--cor-tinta);  /* fallback quando sem imagem */
+  background-attachment: fixed;
+  background-color: var(--cor-tinta); 
   padding: var(--espacamento-xl) var(--espacamento-md);
 }
 
-/* Overlay escuro para legibilidade do texto sobre a imagem */
 .hero-bg::before {
   content: '';
   position: absolute;
   inset: 0;
   background: var(--overlay-hero);
   z-index: 0;
-  pointer-events: none; /* overlay não intercepta cliques — navbar e dropdowns funcionam normalmente */
+  pointer-events: none;
 }
 
 .hero-bg > .hero-content {
@@ -244,7 +237,6 @@ a:hover {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Ornamento decorativo (olho + linhas) acima do título */
 .hero-ornamento {
   display: flex;
   align-items: center;
@@ -271,7 +263,6 @@ a:hover {
   text-shadow: 0 0 12px rgba(199, 168, 107, 0.5);
 }
 
-/* Citação estilizada no hero */
 .hero-citacao {
   font-family: var(--fonte-corpo);
   font-style: italic;
@@ -282,7 +273,6 @@ a:hover {
   letter-spacing: 0.02em;
 }
 
-/* Indicador de scroll no hero */
 .hero-scroll-indicator {
   display: inline-flex;
   flex-direction: column;
@@ -319,14 +309,12 @@ a:hover {
   box-shadow: var(--sombra-card-hover);
 }
 
-/* Garante que o conteúdo interno preenche o card verticalmente */
 .destaque-card > div.p-3 {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Tag de categoria no topo do card (ex: "Último Capítulo") */
 .destaque-tag {
   font-family: var(--fonte-subtitulo);
   font-size: 0.72rem;
@@ -339,7 +327,6 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
-/* Linha de localização/subtipo abaixo do título */
 .destaque-local {
   font-family: var(--fonte-subtitulo);
   font-size: 0.82rem;
@@ -348,12 +335,12 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
-/* ─── PAGE HEADER (páginas internas) ──────────────────────────────────────── */
+/* ─── PAGE HEADER ──────────────────────────────────────── */
 
 .page-header {
   position: relative;
   padding: calc(var(--espacamento-xl) * 0.8) var(--espacamento-md) var(--espacamento-lg);
-  margin-top: 56px; /* compensar navbar fixed-top */
+  margin-top: 56px;
   background-image: var(--bg-page-header);
   background-size: cover;
   background-position: center;
@@ -368,7 +355,7 @@ a:hover {
   inset: 0;
   background: var(--overlay-page-header);
   z-index: 0;
-  pointer-events: none; /* overlay não intercepta cliques */
+  pointer-events: none;
 }
 
 .page-header > * {
@@ -386,7 +373,6 @@ a:hover {
   color: var(--cor-pergaminho);
 }
 
-/* Separador ornamental abaixo dos títulos */
 .page-header h1::after,
 .section-title::after {
   content: '';
@@ -426,7 +412,7 @@ a:hover {
   box-shadow: var(--sombra-card);
   transition: transform var(--transicao-padrao), box-shadow var(--transicao-padrao);
   overflow: hidden;
-  height: 100%; /* Alinhar cards de mesma altura dentro do grid */
+  height: 100%;
 }
 
 .card-portal:hover {
@@ -544,7 +530,7 @@ a:hover {
   color: var(--cor-pergaminho-clr);
 }
 
-/* ─── ACCORDION (sessoes.html) ─────────────────────────────────────────────── */
+/* ─── ACCORDION ─────────────────────────────────────────────── */
 
 .accordion-portal .accordion-item {
   background-color: var(--cor-pergaminho-clr);
@@ -580,7 +566,7 @@ a:hover {
   padding: var(--espacamento-md);
 }
 
-/* ─── SESSÃO ITEM (dentro do accordion) ───────────────────────────────────── */
+/* ─── SESSÃO ITEM ───────────────────────────────────── */
 
 .sessao-item {
   border-left: 3px solid var(--cor-sepia);
@@ -599,7 +585,6 @@ a:hover {
   border-left-color: var(--cor-sepia-clr);
 }
 
-/* Sessão ainda não jogada — placeholder */
 .sessao-item--pendente {
   border-left-color: var(--cor-tinta-suave);
   opacity: 0.7;
@@ -616,7 +601,6 @@ a:hover {
   display: block;
 }
 
-/* Badge de data para sessões pendentes */
 .sessao-data--pendente {
   color: var(--cor-tinta-suave) !important;
   font-style: italic;
@@ -637,7 +621,6 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* Container de resumos multi-parágrafo */
 .sessao-resumo p {
   font-size: 0.95rem;
   color: var(--cor-tinta-media);
@@ -649,12 +632,10 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* Nome do capítulo no header do accordion */
 .capitulo-nome {
   flex: 1;
 }
 
-/* Contador de sessões jogadas (ex: "1/3") no header do accordion */
 .sessao-contagem {
   font-family: var(--fonte-subtitulo);
   font-size: 0.7rem;
@@ -668,13 +649,12 @@ a:hover {
   flex-shrink: 0;
 }
 
-/* Contador quando accordion está aberto (botão não-collapsed) */
 .accordion-button:not(.collapsed) .sessao-contagem {
   background-color: var(--cor-sepia);
   color: var(--cor-tinta);
 }
 
-/* ─── CARDS DE PERSONAGEM (personagens.html) ───────────────────────────────── */
+/* ─── CARDS DE PERSONAGEM ───────────────────────────────── */
 
 .card-personagem {
   display: flex;
@@ -691,7 +671,6 @@ a:hover {
   outline-offset: 2px;
 }
 
-/* Avatar */
 .card-personagem-avatar {
   width: 100%;
   height: 200px;
@@ -700,7 +679,6 @@ a:hover {
   display: block;
 }
 
-/* Corpo do card */
 .card-personagem-corpo {
   padding: 1rem;
   display: flex;
@@ -708,7 +686,6 @@ a:hover {
   flex: 1;
 }
 
-/* Linha topo: tipo + badge status */
 .card-personagem-topo {
   display: flex;
   align-items: center;
@@ -725,7 +702,6 @@ a:hover {
   color: var(--cor-tinta-suave);
 }
 
-/* Nome */
 .card-personagem-nome {
   font-family: var(--fonte-subtitulo);
   font-size: 1.1rem;
@@ -735,7 +711,6 @@ a:hover {
   line-height: 1.3;
 }
 
-/* Ocupação */
 .card-personagem-ocupacao {
   font-family: var(--fonte-subtitulo);
   font-size: 0.82rem;
@@ -745,7 +720,6 @@ a:hover {
   font-style: italic;
 }
 
-/* Bio curta */
 .card-personagem-bio {
   font-size: 0.9rem;
   color: var(--cor-tinta-media);
@@ -754,7 +728,6 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
-/* Rodapé do card */
 .card-personagem-rodape {
   border-top: 1px solid var(--cor-pergaminho-esc);
   padding-top: 0.6rem;
@@ -778,8 +751,6 @@ a:hover {
 
 /* ─── FILTROS DE PERSONAGEM ────────────────────────────────────────────────── */
 
-/* Os botões [data-filtro] usam as classes btn-portal-* existentes */
-/* Transição suave ao trocar estado ativo */
 [data-filtro] {
   transition: background-color var(--transicao-rapida),
               color var(--transicao-rapida),
@@ -792,7 +763,6 @@ a:hover {
   font-family: var(--fonte-corpo);
 }
 
-/* Cabeçalho */
 .ficha-cabecalho {
   flex-wrap: wrap;
 }
@@ -845,7 +815,6 @@ a:hover {
   margin: 0;
 }
 
-/* Estatísticas vitais (SAN / PV / PM) */
 .ficha-vitais {
   background-color: var(--cor-tinta);
   border-radius: var(--raio-borda);
@@ -876,7 +845,6 @@ a:hover {
   line-height: 1.1;
 }
 
-/* Título de seção dentro do modal */
 .ficha-secao-titulo {
   font-family: var(--fonte-subtitulo);
   font-size: 0.82rem;
@@ -889,7 +857,6 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
-/* Barras de habilidades */
 .ficha-habilidades {
   display: flex;
   flex-direction: column;
@@ -897,7 +864,7 @@ a:hover {
 }
 
 .ficha-habilidade {
-  /* container de cada habilidade */
+
 }
 
 .ficha-hab-header {
@@ -940,13 +907,11 @@ a:hover {
   flex-direction: column;
 }
 
-/* Topo do card — contém a imagem e o botão de expansão */
 .card-mapa-topo {
   position: relative;
   overflow: hidden;
 }
 
-/* Imagem do mapa */
 .card-mapa-img {
   width: 100%;
   height: 200px;
@@ -960,7 +925,6 @@ a:hover {
   transform: scale(1.03);
 }
 
-/* Botão de expandir mapa (sobrepõe a imagem no canto) */
 .btn-expandir-mapa {
   position: absolute;
   bottom: 0.6rem;
@@ -987,7 +951,6 @@ a:hover {
   outline-offset: 1px;
 }
 
-/* Corpo do card */
 .card-mapa-corpo {
   padding: 1rem;
   display: flex;
@@ -995,7 +958,6 @@ a:hover {
   flex: 1;
 }
 
-/* Cabeçalho do card (ícone + nome + cidade) */
 .card-mapa-head {
   display: flex;
   align-items: flex-start;
@@ -1028,7 +990,6 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* Descrição principal */
 .card-mapa-descricao {
   font-size: 0.92rem;
   color: var(--cor-tinta-media);
@@ -1036,7 +997,6 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
-/* Bloco de clima */
 .card-mapa-clima {
   font-family: var(--fonte-subtitulo);
   font-size: 0.78rem;
@@ -1078,7 +1038,7 @@ a:hover {
   color: var(--cor-sangue);
 }
 
-/* Foto do culto */
+
 .culto-foto {
   width: 100%;
   height: 110px;
@@ -1089,7 +1049,6 @@ a:hover {
   display: block;
 }
 
-/* Placeholder da foto do culto */
 div.culto-foto {
   display: flex;
   align-items: center;
@@ -1202,7 +1161,6 @@ div.culto-foto {
   line-height: 1;
   color: var(--cor-sepia);
   letter-spacing: 0.02em;
-  /* transição suave ao atualizar o número */
   transition: color var(--transicao-rapida);
 }
 
@@ -1212,7 +1170,6 @@ div.culto-foto {
   font-weight: 700;
   line-height: 1;
   color: var(--cor-sepia-esc);
-  /* alinha o separador com os números (compensar a label abaixo) */
   padding-top: 0;
   align-self: flex-start;
 }
@@ -1227,12 +1184,10 @@ div.culto-foto {
   margin-top: 0.4rem;
 }
 
-/* Estado expirado — aplique via JS adicionando .countdown--expirado ao #countdown */
 #countdown.countdown--expirado .countdown-numero {
   color: var(--cor-sangue);
 }
 
-/* Em telas muito pequenas (<360px), reduz o tamanho dos números */
 @media (max-width: 359px) {
   .countdown-numero,
   .countdown-separador {
@@ -1243,18 +1198,16 @@ div.culto-foto {
   }
 }
 
-/* Mensagem de status do countdown (expirado / em andamento) */
 .countdown-mensagem {
   font-family: var(--fonte-subtitulo);
   font-size: 0.85rem;
   color: var(--cor-tinta-suave);
   letter-spacing: 0.06em;
-  min-height: 1.4em; /* evita layout shift quando a mensagem aparece */
+  min-height: 1.4em;
 }
 
 /* ─── ROLADOR DE DADOS (index.html) ────────────────────────────────────────── */
 
-/* Labels dos controles */
 .rolador-label {
   font-family: var(--fonte-subtitulo);
   font-size: 0.82rem;
@@ -1266,7 +1219,6 @@ div.culto-foto {
   display: block;
 }
 
-/* Select temático */
 .rolador-select {
   background-color: var(--cor-pergaminho);
   border-color: var(--cor-sepia-esc);
@@ -1282,7 +1234,6 @@ div.culto-foto {
   color: var(--cor-tinta);
 }
 
-/* Input numérico de quantidade */
 .rolador-input {
   background-color: var(--cor-pergaminho);
   border-color: var(--cor-sepia-esc);
@@ -1299,7 +1250,6 @@ div.culto-foto {
   color: var(--cor-tinta);
 }
 
-/* Área de resultado */
 .resultado-rolagem {
   background-color: var(--cor-tinta);
   border: var(--borda-dupla);
@@ -1315,7 +1265,6 @@ div.culto-foto {
   transition: box-shadow var(--transicao-padrao);
 }
 
-/* Número principal da soma */
 .resultado-soma {
   font-family: var(--fonte-titulo);
   font-size: clamp(2rem, 8vw, 3rem);
@@ -1325,7 +1274,6 @@ div.culto-foto {
   letter-spacing: 0.04em;
 }
 
-/* Linha com os individuais + equação */
 .resultado-individuais {
   font-family: var(--fonte-subtitulo);
   font-size: 0.78rem;
@@ -1333,7 +1281,6 @@ div.culto-foto {
   letter-spacing: 0.08em;
 }
 
-/* Animação de destaque ao rolar */
 @keyframes resultado-flash {
   0%   { box-shadow: 0 0 0 0 rgba(199, 168, 107, 0); }
   30%  { box-shadow: 0 0 0 6px rgba(199, 168, 107, 0.4); }
@@ -1344,7 +1291,6 @@ div.culto-foto {
   animation: resultado-flash 0.5s ease-out forwards;
 }
 
-/* Histórico */
 .historico-titulo {
   font-family: var(--fonte-subtitulo);
   font-size: 0.78rem;
@@ -1374,7 +1320,6 @@ div.culto-foto {
   letter-spacing: 0.04em;
 }
 
-/* Fade progressivo — aplicado inline via JS com opacity */
 .historico-item i {
   color: var(--cor-sepia-esc);
 }
@@ -1455,7 +1400,6 @@ div.culto-foto {
 
 /* ─── UTILITÁRIOS TEMÁTICOS ────────────────────────────────────────────────── */
 
-/* Divisor ornamental */
 .divisor-ornamental {
   display: flex;
   align-items: center;
@@ -1476,7 +1420,6 @@ div.culto-foto {
   background: linear-gradient(90deg, var(--cor-sepia-esc), transparent);
 }
 
-/* Texto de citação temático */
 .citacao-tematica {
   border-left: 4px solid var(--cor-sepia);
   padding: 0.75rem 1.25rem;
@@ -1487,13 +1430,11 @@ div.culto-foto {
   border-radius: 0 var(--raio-borda) var(--raio-borda) 0;
 }
 
-/* Classe de conteúdo principal — compensar navbar fixa */
 .conteudo-principal {
   margin-top: 56px;
-  min-height: calc(100vh - 56px - 280px); /* 280px ≈ altura estimada do footer */
+  min-height: calc(100vh - 56px - 280px);
 }
 
-/* Sobrescrita do scroll-margin para âncoras abaixo da navbar fixa */
 [id] {
   scroll-margin-top: 70px;
 }
@@ -1506,11 +1447,11 @@ div.culto-foto {
   }
 
   .hero-bg {
-    background-attachment: scroll; /* parallax desabilitado em mobile */
+    background-attachment: scroll;
   }
 
   .hero-ornamento-linha {
-    width: 40px; /* linhas menores em mobile */
+    width: 40px;
   }
 
   .secao,
@@ -1526,7 +1467,6 @@ div.culto-foto {
   }
 }
 
-/* Em mobile (menu colapsado), troca indicador de border-bottom por border-left */
 @media (max-width: 991.98px) {
   .navbar-portal .nav-link.active,
   .navbar-portal .dropdown-toggle.active {

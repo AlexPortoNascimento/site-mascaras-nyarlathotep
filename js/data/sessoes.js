@@ -1,36 +1,3 @@
-/**
- * data/sessoes.js — Banco de dados das sessões da campanha.
- *
- * Estrutura canônica de Máscaras de Nyarlathotep (edição completa, 2018).
- * Ordem: Prólogo (Peru) → Nova Iorque → Inglaterra → Egito → Quênia → Austrália → China
- *
- * Para adicionar uma sessão: localize o capítulo, crie o arquivo de resumo em
- * js/data/resumos/, carregue-o em sessoes.html ANTES deste arquivo, e adicione
- * o objeto abaixo referenciando a constante.
- *
- * Datas: sessões de 2 em 2 semanas a partir de 05/10/2026.
- * Sessão 1  → 05/10/2026
- * Sessão 2  → 19/10/2026
- * Sessão 3  → 02/11/2026
- * Sessão 4  → 16/11/2026
- * Sessão 5  → 30/11/2026
- * Sessão 6  → 14/12/2026
- * Sessão 7  → 28/12/2026
- * Sessão 8  → 11/01/2027
- * Sessão 9  → 25/01/2027
- * Sessão 10 → 08/02/2027
- * Sessão 11 → 22/02/2027
- * Sessão 12 → 08/03/2027
- * Sessão 13 → 22/03/2027
- * Sessão 14 → 05/04/2027
- * Sessão 15 → 19/04/2027
- * Sessão 16 → 03/05/2027
- * Sessão 17 → 17/05/2027
- * Sessão 18 → 31/05/2027
- * Sessão 19 → 14/06/2027
- */
-
-// eslint-disable-next-line no-unused-vars
 const CAPITULOS = [
 
   // ─── PRÓLOGO — PERU ────────────────────────────────────────────────────────

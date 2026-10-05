@@ -1,29 +1,6 @@
-/**
- * destaques.js — Renderiza os 3 cards de destaque da index.html.
- *
- * Lê os dados de CAPITULOS (data/sessoes.js), PERSONAGENS (data/personagens.js)
- * e LOCAIS (data/locais.js) e monta os cards dinamicamente.
- *
- * Lógica de seleção:
- *  - Capítulo em destaque: último capítulo com pelo menos uma sessão real (data != '00/00/0000')
- *    — se nenhum, usa o primeiro do array como fallback.
- *  - Personagem em destaque: primeiro PJ do array (o mais proeminente).
- *  - Local em destaque: primeiro local do array LOCAIS.
- *
- * Para alterar qual item aparece em destaque, reordene os arrays nos arquivos
- * de dados — o primeiro elegível de cada tipo sempre será exibido.
- */
-
 (function () {
   'use strict';
 
-  // ─── Helpers ──────────────────────────────────────────────────────────────
-
-  /**
-   * Retorna o HTML do badge de status de um personagem.
-   * @param {string} status
-   * @returns {string}
-   */
   function badgeStatus(status) {
     const mapa = {
       'Vivo':   'badge-vivo',
@@ -35,13 +12,6 @@
     return `<span class="badge-status ${cls}">${status}</span>`;
   }
 
-  /**
-   * Retorna o HTML do bloco de imagem — real ou placeholder.
-   * @param {string|null} src  - caminho da imagem
-   * @param {string}      alt  - texto alternativo
-   * @param {string}      icon - classe bi-* para o placeholder
-   * @returns {string}
-   */
   function blocoImagem(src, alt, icon) {
     if (src) {
       return `<img src="${src}" alt="${alt}" class="w-100" style="height:180px;object-fit:cover;border-bottom:var(--borda);" loading="lazy" />`;
@@ -57,7 +27,6 @@
   function renderCardCapitulo(container) {
     if (typeof CAPITULOS === 'undefined' || !CAPITULOS.length) return;
 
-    // Prefere o último capítulo com sessão real; fallback para o primeiro
     const comSessaoReal = CAPITULOS.filter(function (c) {
       return c.sessoes.some(function (s) { return s.data !== '00/00/0000'; });
     });
@@ -65,7 +34,6 @@
       ? comSessaoReal[comSessaoReal.length - 1]
       : CAPITULOS[0];
 
-    // Última sessão real, ou a primeira placeholder
     const sessaoReal = cap.sessoes.filter(function (s) { return s.data !== '00/00/0000'; });
     const ultimaSessao = sessaoReal.length ? sessaoReal[sessaoReal.length - 1] : cap.sessoes[0];
 
@@ -91,7 +59,6 @@
   function renderCardPersonagem(container) {
     if (typeof PERSONAGENS === 'undefined' || !PERSONAGENS.length) return;
 
-    // Primeiro PJ (protagonista), fallback para qualquer personagem
     const pj = PERSONAGENS.find(function (p) { return p.tipo === 'PJ'; }) || PERSONAGENS[0];
 
     container.innerHTML = `
@@ -136,17 +103,13 @@
       </div>`;
   }
 
-  // ─── Init ──────────────────────────────────────────────────────────────────
-
   function iniciarDestaques() {
     const grid = document.getElementById('cards-destaques');
     if (!grid) return;
 
-    // Obtém os 3 elementos col existentes ou cria se necessário
     const cols = grid.querySelectorAll('.col-12');
     if (cols.length < 3) return;
 
-    // Limpa conteúdo placeholder e re-popula
     const wrappers = [
       cols[0].querySelector('.card-portal'),
       cols[1].querySelector('.card-portal'),

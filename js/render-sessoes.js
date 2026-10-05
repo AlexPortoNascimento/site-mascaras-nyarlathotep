@@ -1,46 +1,17 @@
-/**
- * render-sessoes.js — Renderiza o accordion de capítulos/sessões em sessoes.html.
- *
- * Lê CAPITULOS (data/sessoes.js) e gera o markup do Accordion do Bootstrap 5
- * injetando no elemento #accordion-capitulos da página.
- *
- * Estrutura gerada:
- *   accordion
- *   └── accordion-item  (por capítulo)
- *       ├── accordion-header  → nome do país + ícone
- *       └── accordion-body
- *           └── sessao-item  (por sessão)
- *               ├── badge de data
- *               ├── título
- *               └── resumo
- */
-
 (function () {
   'use strict';
 
-  /**
-   * Converte texto com quebras de linha em parágrafos HTML.
-   * Linhas em branco separam parágrafos; \n simples vira espaço.
-   * @param {string} texto
-   * @returns {string} HTML com tags <p>
-   */
   function textoParaParagrafos(texto) {
     return texto
       .trim()
-      .split(/\n\s*\n/)                          // divide por linha em branco
-      .filter(function (p) { return p.trim(); }) // remove blocos vazios
+      .split(/\n\s*\n/)  
+      .filter(function (p) { return p.trim(); })
       .map(function (p) {
         return '<p>' + p.trim().replace(/\n/g, ' ') + '</p>';
       })
       .join('');
   }
 
-  /**
-   * Gera o HTML de um item de sessão dentro do accordion body.
-   * @param {{ data: string, titulo: string, resumo: string }} sessao
-   * @param {number} idxSessao - índice dentro do capítulo
-   * @returns {string}
-   */
   function htmlSessao(sessao, idxSessao) {
     const temData   = sessao.data !== '00/00/0000';
     const badgeData = temData
@@ -55,13 +26,6 @@
       </article>`.trim();
   }
 
-  /**
-   * Gera o HTML de um accordion-item completo para um capítulo.
-   * O primeiro capítulo fica aberto por padrão.
-   * @param {{ id, pais, capitulo, icone, sessoes }} cap
-   * @param {number} idxCap - índice no array CAPITULOS
-   * @returns {string}
-   */
   function htmlCapitulo(cap, idxCap) {
     const aberto       = idxCap === 0;
     const colapsadoCls = aberto ? '' : ' collapsed';
@@ -108,9 +72,6 @@
       </div>`.trim();
   }
 
-  /**
-   * Renderiza todos os capítulos no elemento #accordion-capitulos.
-   */
   function renderCapitulos() {
     const container = document.getElementById('accordion-capitulos');
     if (!container) return;
