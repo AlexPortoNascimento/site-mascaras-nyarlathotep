@@ -137,20 +137,26 @@
   <header class="hero-bg" id="hero" aria-label="Boas-vindas ao Portal da Campanha">
     <div class="hero-content">
 
-      <p class="subtitulo-tematico mb-3">
-        <i class="bi bi-eye-fill me-2" aria-hidden="true"></i>
-        Uma Campanha de Chamado de Cthulhu · 1925
+      <!-- Ornamento superior -->
+      <div class="hero-ornamento" aria-hidden="true">
+        <span class="hero-ornamento-linha"></span>
+        <i class="bi bi-eye-fill hero-ornamento-icone"></i>
+        <span class="hero-ornamento-linha"></span>
+      </div>
+
+      <p class="subtitulo-tematico mb-3 mt-4">
+        Uma Campanha de Chamado de Cthulhu &middot; 1925
       </p>
 
-      <h1 class="display-titulo text-center mb-3">
+      <h1 class="display-titulo text-center mb-4">
         Máscaras de<br />Nyarlathotep
       </h1>
 
-      <p class="subtitulo-tematico mb-5">
-        "Não há fuga — apenas a escolha de como encarar o inevitável."
+      <p class="hero-citacao mb-5">
+        &ldquo;Não há fuga &mdash; apenas a escolha de como encarar o inevitável.&rdquo;
       </p>
 
-      <div class="d-flex flex-wrap justify-content-center gap-3">
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
         <a href="sessoes.html" class="btn-portal-primario">
           <i class="bi bi-book me-2" aria-hidden="true"></i>Crônicas da Campanha
         </a>
@@ -158,6 +164,11 @@
           <i class="bi bi-people me-2" aria-hidden="true"></i>Investigadores
         </a>
       </div>
+
+      <!-- Indicador de scroll -->
+      <a href="#proxima-sessao" class="hero-scroll-indicator" aria-label="Rolar para o conteúdo">
+        <i class="bi bi-chevron-double-down" aria-hidden="true"></i>
+      </a>
 
     </div>
   </header>
@@ -223,7 +234,8 @@
 
   <!-- ═══════════════════════════════════════════════════════════
        DESTAQUES DO MUNDO
-       (Renderizado por JS — cards de sessão, personagem e local)
+       Populado dinamicamente por js/destaques.js a partir dos
+       dados em js/data/sessoes.js, personagens.js e locais.js
        ═══════════════════════════════════════════════════════════ -->
   <section class="secao" id="destaques" aria-label="Destaques do mundo">
     <div class="container">
@@ -231,58 +243,49 @@
       <h2 class="section-title">Destaques do Mundo</h2>
 
       <div class="row g-4" id="cards-destaques">
-        <!-- Cards gerados por js/components/destaques.js (Task 3) -->
-        <!-- Placeholder para Task 1 -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card-portal">
-            <div class="placeholder-img placeholder-img-md" aria-label="Imagem do capítulo recente">
-              <i class="bi bi-book" style="font-size: 2rem;" aria-hidden="true"></i>
+
+        <!-- Card 1: Capítulo em destaque — populado por destaques.js -->
+        <div class="col-12 col-sm-6 col-lg-4 d-flex">
+          <div class="card-portal destaque-card w-100">
+            <!-- JS injeta aqui -->
+            <div class="placeholder-img placeholder-img-md" aria-label="Carregando capítulo">
+              <i class="bi bi-book" style="font-size:2rem;" aria-hidden="true"></i>
             </div>
             <div class="p-3">
-              <div class="card-portal card-header">Último Capítulo</div>
-              <div class="p-0 pt-3">
-                <h3 class="card-title">Capítulo em Andamento</h3>
-                <p class="card-text">Acompanhe o resumo das sessões mais recentes da campanha.</p>
-                <a href="sessoes.html" class="btn-portal-secundario d-inline-block mt-2">
-                  <i class="bi bi-arrow-right me-1" aria-hidden="true"></i>Ver Crônicas
-                </a>
+              <div class="destaque-tag">
+                <i class="bi bi-bookmark-fill me-1" aria-hidden="true"></i>Último Capítulo
               </div>
+              <p class="card-text mt-2" style="color:var(--cor-tinta-suave);font-style:italic;">Carregando…</p>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card-portal">
-            <div class="placeholder-img placeholder-img-md" aria-label="Avatar do personagem em destaque">
-              <i class="bi bi-person-badge" style="font-size: 2rem;" aria-hidden="true"></i>
+        <!-- Card 2: Personagem em destaque — populado por destaques.js -->
+        <div class="col-12 col-sm-6 col-lg-4 d-flex">
+          <div class="card-portal destaque-card w-100">
+            <div class="placeholder-img placeholder-img-md" aria-label="Carregando personagem">
+              <i class="bi bi-person-badge" style="font-size:2rem;" aria-hidden="true"></i>
             </div>
             <div class="p-3">
-              <div class="card-portal card-header">Investigador em Destaque</div>
-              <div class="p-0 pt-3">
-                <h3 class="card-title">Personagem da Campanha</h3>
-                <p class="card-text">Conheça a ficha e a biografia dos investigadores e figuras centrais.</p>
-                <a href="personagens.html" class="btn-portal-secundario d-inline-block mt-2">
-                  <i class="bi bi-arrow-right me-1" aria-hidden="true"></i>Ver Fichas
-                </a>
+              <div class="destaque-tag">
+                <i class="bi bi-person-fill me-1" aria-hidden="true"></i>Investigador em Destaque
               </div>
+              <p class="card-text mt-2" style="color:var(--cor-tinta-suave);font-style:italic;">Carregando…</p>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card-portal">
-            <div class="placeholder-img placeholder-img-md" aria-label="Mapa do local descoberto">
-              <i class="bi bi-map" style="font-size: 2rem;" aria-hidden="true"></i>
+        <!-- Card 3: Local em destaque — populado por destaques.js -->
+        <div class="col-12 col-sm-6 col-lg-4 d-flex">
+          <div class="card-portal destaque-card w-100">
+            <div class="placeholder-img placeholder-img-md" aria-label="Carregando locação">
+              <i class="bi bi-map" style="font-size:2rem;" aria-hidden="true"></i>
             </div>
             <div class="p-3">
-              <div class="card-portal card-header">Novo Local Descoberto</div>
-              <div class="p-0 pt-3">
-                <h3 class="card-title">Locações da Campanha</h3>
-                <p class="card-text">Explore os países e locais visitados ao longo da investigação global.</p>
-                <a href="mapas.html" class="btn-portal-secundario d-inline-block mt-2">
-                  <i class="bi bi-arrow-right me-1" aria-hidden="true"></i>Ver Mapas
-                </a>
+              <div class="destaque-tag">
+                <i class="bi bi-globe-americas me-1" aria-hidden="true"></i>Próxima Locação
               </div>
+              <p class="card-text mt-2" style="color:var(--cor-tinta-suave);font-style:italic;">Carregando…</p>
             </div>
           </div>
         </div>
@@ -487,7 +490,13 @@
   <script src="js/components/navbar.js"></script>
   <script src="js/components/footer.js"></script>
 
+  <!-- Dados (necessários para destaques.js) -->
+  <script src="js/data/sessoes.js"></script>
+  <script src="js/data/personagens.js"></script>
+  <script src="js/data/locais.js"></script>
+
   <!-- Scripts da index -->
+  <script src="js/destaques.js"></script>
   <script src="js/countdown.js"></script>
   <script src="js/dice-roller.js"></script>
 
