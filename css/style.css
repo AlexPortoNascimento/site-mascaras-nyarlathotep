@@ -643,6 +643,30 @@ a:hover {
 
 .countdown-unidade {
   min-width: 4rem;
+  text-align: center;
+}
+
+.countdown-numero {
+  display: block;
+  font-family: var(--fonte-subtitulo);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cor-sepia);
+  letter-spacing: 0.02em;
+  /* transição suave ao atualizar o número */
+  transition: color var(--transicao-rapida);
+}
+
+.countdown-separador {
+  font-family: var(--fonte-subtitulo);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cor-sepia-esc);
+  /* alinha o separador com os números (compensar a label abaixo) */
+  padding-top: 0;
+  align-self: flex-start;
 }
 
 .countdown-label-unidade {
@@ -652,7 +676,23 @@ a:hover {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--cor-tinta-suave);
-  margin-top: 0.25rem;
+  margin-top: 0.4rem;
+}
+
+/* Estado expirado — aplique via JS adicionando .countdown--expirado ao #countdown */
+#countdown.countdown--expirado .countdown-numero {
+  color: var(--cor-sangue);
+}
+
+/* Em telas muito pequenas (<360px), reduz o tamanho dos números */
+@media (max-width: 359px) {
+  .countdown-numero,
+  .countdown-separador {
+    font-size: 1.6rem;
+  }
+  .countdown-unidade {
+    min-width: 2.8rem;
+  }
 }
 
 /* ─── FOOTER ───────────────────────────────────────────────────────────────── */

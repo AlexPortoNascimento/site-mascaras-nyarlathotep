@@ -192,31 +192,35 @@
             </p>
 
             <!-- Display da contagem regressiva -->
-            <div class="d-flex justify-content-center gap-3 gap-sm-4 mb-3" id="countdown" aria-live="polite" aria-label="Contagem regressiva para a próxima sessão">
+            <div class="d-flex justify-content-center align-items-start gap-2 gap-sm-3 mb-3"
+                 id="countdown"
+                 aria-live="polite"
+                 aria-atomic="true"
+                 aria-label="Contagem regressiva para a próxima sessão">
 
-              <div class="countdown-unidade text-center">
-                <span class="countdown-numero display-5 fw-bold" id="countdown-dias" style="font-family: var(--fonte-subtitulo); color: var(--cor-sepia);">--</span>
+              <div class="countdown-unidade">
+                <span class="countdown-numero" id="countdown-dias">--</span>
                 <div class="countdown-label-unidade">dias</div>
               </div>
 
-              <div class="countdown-separador display-5 fw-bold" style="color: var(--cor-sepia-esc);" aria-hidden="true">:</div>
+              <div class="countdown-separador" aria-hidden="true">:</div>
 
-              <div class="countdown-unidade text-center">
-                <span class="countdown-numero display-5 fw-bold" id="countdown-horas" style="font-family: var(--fonte-subtitulo); color: var(--cor-sepia);">--</span>
+              <div class="countdown-unidade">
+                <span class="countdown-numero" id="countdown-horas">--</span>
                 <div class="countdown-label-unidade">horas</div>
               </div>
 
-              <div class="countdown-separador display-5 fw-bold" style="color: var(--cor-sepia-esc);" aria-hidden="true">:</div>
+              <div class="countdown-separador" aria-hidden="true">:</div>
 
-              <div class="countdown-unidade text-center">
-                <span class="countdown-numero display-5 fw-bold" id="countdown-minutos" style="font-family: var(--fonte-subtitulo); color: var(--cor-sepia);">--</span>
+              <div class="countdown-unidade">
+                <span class="countdown-numero" id="countdown-minutos">--</span>
                 <div class="countdown-label-unidade">min</div>
               </div>
 
-              <div class="countdown-separador display-5 fw-bold" style="color: var(--cor-sepia-esc);" aria-hidden="true">:</div>
+              <div class="countdown-separador" aria-hidden="true">:</div>
 
-              <div class="countdown-unidade text-center">
-                <span class="countdown-numero display-5 fw-bold" id="countdown-segundos" style="font-family: var(--fonte-subtitulo); color: var(--cor-sepia);">--</span>
+              <div class="countdown-unidade">
+                <span class="countdown-numero" id="countdown-segundos">--</span>
                 <div class="countdown-label-unidade">seg</div>
               </div>
 
