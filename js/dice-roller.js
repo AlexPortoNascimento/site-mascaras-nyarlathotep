@@ -6,9 +6,6 @@
  *  - Seleção de quantidade (1–20 dados)
  *  - Exibe resultado individual de cada dado + soma total
  *  - Histórico das últimas rolagens (máximo 10)
- *
- * Implementação completa na Task 5.
- * Este arquivo contém a estrutura e lógica comentadas prontas para ativação.
  */
 
 (function () {
@@ -17,12 +14,12 @@
   // Máximo de entradas no histórico
   const MAX_HISTORICO = 10;
 
-  /** Histórico em memória (array de strings descritivas) */
+  /** Histórico em memória (array de objetos {lados, quantidade, individuais, soma}) */
   const historico = [];
 
   /**
    * Rola um único dado de `lados` faces.
-   * @param {number} lados - Número de faces do dado (ex: 20 para d20)
+   * @param {number} lados
    * @returns {number} Resultado entre 1 e lados (inclusive)
    */
   function rolarUmDado(lados) {
@@ -40,91 +37,102 @@
     for (let i = 0; i < quantidade; i++) {
       individuais.push(rolarUmDado(lados));
     }
-    const soma = individuais.reduce((acc, val) => acc + val, 0);
+    const soma = individuais.reduce(function (acc, val) { return acc + val; }, 0);
     return { individuais, soma };
   }
 
   /**
-   * Atualiza o DOM com o resultado da rolagem.
+   * Atualiza a área de resultado com a rolagem atual.
    * @param {number} lados
    * @param {number} quantidade
    * @param {{ individuais: number[], soma: number }} resultado
    */
   function exibirResultado(lados, quantidade, resultado) {
-    const elSoma          = document.getElementById('resultado-soma');
-    const elIndividuais   = document.getElementById('resultado-individuais');
-
+    const elSoma        = document.getElementById('resultado-soma');
+    const elIndividuais = document.getElementById('resultado-individuais');
     if (!elSoma || !elIndividuais) return;
 
     elSoma.textContent = resultado.soma;
 
     if (quantidade === 1) {
-      elIndividuais.textContent = `1d${lados} → ${resultado.individuais[0]}`;
+      elIndividuais.textContent = `1d${lados} \u2192 ${resultado.individuais[0]}`;
     } else {
       elIndividuais.textContent =
-        `${quantidade}d${lados} → [${resultado.individuais.join(', ')}] = ${resultado.soma}`;
+        `${quantidade}d${lados} \u2192 [${resultado.individuais.join(', ')}] = ${resultado.soma}`;
+    }
+
+    // Animação de destaque no resultado (adiciona e remove classe)
+    const elRolagem = document.getElementById('resultado-rolagem');
+    if (elRolagem) {
+      elRolagem.classList.remove('resultado--animado');
+      // força reflow para reiniciar animação
+      void elRolagem.offsetWidth;
+      elRolagem.classList.add('resultado--animado');
     }
   }
 
   /**
-   * Adiciona uma entrada ao histórico e atualiza o DOM.
+   * Gera o HTML de um item de histórico dado seu índice (0 = mais recente).
+   * @param {{ lados, quantidade, individuais, soma }} entrada
+   * @param {number} idx
+   * @returns {string}
+   */
+  function htmlItemHistorico(entrada, idx) {
+    const { lados, quantidade, individuais, soma } = entrada;
+    const texto = quantidade === 1
+      ? `1d${lados} = ${soma}`
+      : `${quantidade}d${lados} = ${soma}  [${individuais.join(', ')}]`;
+
+    return `<li class="historico-item" data-idx="${idx}">
+      <i class="bi bi-dice-3 me-1" aria-hidden="true"></i>${texto}
+    </li>`;
+  }
+
+  /**
+   * Re-renderiza o elemento de histórico a partir do array em memória.
+   */
+  function renderHistorico() {
+    const elHistorico = document.getElementById('historico-rolagens');
+    if (!elHistorico) return;
+
+    if (historico.length === 0) {
+      elHistorico.innerHTML =
+        '<li class="historico-vazio">Nenhuma rolagem ainda.</li>';
+      return;
+    }
+
+    elHistorico.innerHTML = historico
+      .map(function (entrada, idx) { return htmlItemHistorico(entrada, idx); })
+      .join('');
+  }
+
+  /**
+   * Adiciona uma entrada ao histórico e re-renderiza.
    * @param {number} lados
    * @param {number} quantidade
    * @param {{ individuais: number[], soma: number }} resultado
    */
   function adicionarAoHistorico(lados, quantidade, resultado) {
-    const elHistorico = document.getElementById('historico-rolagens');
-    if (!elHistorico) return;
-
-    // Descrição textual da rolagem
-    const entrada = quantidade === 1
-      ? `1d${lados} = ${resultado.soma}`
-      : `${quantidade}d${lados} = ${resultado.soma}  [${resultado.individuais.join(', ')}]`;
-
-    historico.unshift(entrada);
-
-    // Mantém o máximo configurado
-    if (historico.length > MAX_HISTORICO) {
-      historico.pop();
-    }
-
-    // Re-renderiza o histórico
-    elHistorico.innerHTML = historico
-      .map(function (item, idx) {
-        const opacidade = Math.max(0.4, 1 - idx * 0.08);
-        return `
-          <li style="
-            font-size: 0.83rem;
-            color: var(--cor-tinta-media);
-            opacity: ${opacidade};
-            padding: 0.2rem 0;
-            border-bottom: 1px dotted var(--cor-pergaminho-esc);
-            font-family: var(--fonte-subtitulo);
-            letter-spacing: 0.04em;
-          ">
-            <i class="bi bi-dice-3 me-1" style="color: var(--cor-sepia-esc);" aria-hidden="true"></i>
-            ${item}
-          </li>`.trim();
-      })
-      .join('');
+    historico.unshift({ lados, quantidade, individuais: resultado.individuais, soma: resultado.soma });
+    if (historico.length > MAX_HISTORICO) historico.pop();
+    renderHistorico();
   }
 
   /**
-   * Handler principal do botão "Rolar".
+   * Handler do botão "Rolar" e do Enter no campo de quantidade.
    */
   function handleRolar() {
     const elTipo       = document.getElementById('dado-tipo');
     const elQuantidade = document.getElementById('dado-quantidade');
-
     if (!elTipo || !elQuantidade) return;
 
-    const lados     = parseInt(elTipo.value, 10);
-    let quantidade  = parseInt(elQuantidade.value, 10);
+    const lados    = parseInt(elTipo.value, 10);
+    let quantidade = parseInt(elQuantidade.value, 10);
 
-    // Validação: quantidade entre 1 e 20
-    if (isNaN(quantidade) || quantidade < 1) quantidade = 1;
-    if (quantidade > 20) quantidade = 20;
-    elQuantidade.value = quantidade; // Corrige o valor no input
+    // Sanitiza quantidade
+    if (isNaN(quantidade) || quantidade < 1)  quantidade = 1;
+    if (quantidade > 20)                       quantidade = 20;
+    elQuantidade.value = quantidade;
 
     const resultado = rolarDados(lados, quantidade);
     exibirResultado(lados, quantidade, resultado);
@@ -132,21 +140,28 @@
   }
 
   /**
-   * Inicializa o rolador de dados: associa eventos.
+   * Inicializa o rolador: registra eventos.
+   * Sai silenciosamente se não estiver na página correta.
    */
   function iniciarRolador() {
     const btnRolar = document.getElementById('btn-rolar');
-    if (!btnRolar) return; // Não estamos na index — sair silenciosamente
+    if (!btnRolar) return;
 
     btnRolar.addEventListener('click', handleRolar);
 
-    // Rolar com Enter no campo de quantidade
+    // Enter no campo de quantidade também rola
     const elQuantidade = document.getElementById('dado-quantidade');
     if (elQuantidade) {
       elQuantidade.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') handleRolar();
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleRolar();
+        }
       });
     }
+
+    // Renderiza histórico vazio inicial
+    renderHistorico();
   }
 
   document.addEventListener('DOMContentLoaded', iniciarRolador);
